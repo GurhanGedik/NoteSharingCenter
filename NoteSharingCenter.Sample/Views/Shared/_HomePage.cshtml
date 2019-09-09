@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <title>@ViewBag.Title</title>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/vendor/animate/animate.min.css">
+    <link rel="stylesheet" href="~/vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/css/theme.css">
+    <link rel="stylesheet" href="~/css/theme-elements.css">
+    <link rel="stylesheet" href="~/css/theme-blog.css">
+    <link rel="stylesheet" href="~/css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet" href="~/vendor/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="~/vendor/rs-plugin/css/layers.css">
+    <link rel="stylesheet" href="~/vendor/rs-plugin/css/navigation.css">
+
+    <!-- Demo CSS -->
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="~/css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="~/css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="~/vendor/modernizr/modernizr.min.js"></script>
+
+</head>
+<body class="loading-overlay-showing" data-loading-overlay data-plugin-options="{'hideDelay': 1000}">
+
+    <header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
+        <div class="header-body border-top-0 header-body-bottom-border">
+            <div class="header-container container-fluid px-lg-4">
+                <div class="header-row">
+                    <div class="header-column justify-content-end">
+                        <div class="header-row">
+                            <div class="header-nav header-nav-line header-nav-bottom-line header-nav-line-under-text header-nav-bottom-line-effect-1">
+                                <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
+                                    <nav class="collapse">
+                                        <ul class="nav nav-pills" id="mainNav">
+                                            <li class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle active" href="/">
+                                                    Note Sharing Center
+                                                </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle" href="#">
+                                                    Home
+                                                </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle" href="#">
+                                                    Categories
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="page-careers.html">Categories 1</a></li>
+                                                    <li><a class="dropdown-item" href="page-careers.html">Categories 2</a></li>
+                                                    <li><a class="dropdown-item" href="page-careers.html">Categories 3</a></li>
+                                                    <li><a class="dropdown-item" href="page-careers.html">Categories 4</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle" href="#">
+                                                    Login
+                                                </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle" href="#">
+                                                    Sing Up
+                                                </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle" href="#">
+                                                    Gürhan GEDİK
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="page-careers.html">Manage</a></li>
+                                                    <li><a class="dropdown-item" href="page-careers.html">Logout</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
+                                    <i class="fas fa-bars"></i>
+                                </button>
+                            </div>
+                            <div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2 mr-2 mr-lg-0">
+                                <div class="header-nav-feature header-nav-features-search d-inline-flex">
+                                    <a href="#" class="header-nav-features-toggle" data-focus="headerSearch"><i class="fas fa-search header-nav-top-icon"></i></a>
+                                    <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed" id="headerTopSearchDropdown">
+                                        <form role="search" action="page-search-results.html" method="get">
+                                            <div class="simple-search input-group">
+                                                <input class="form-control text-1" id="headerSearch" name="q" type="search" value="" placeholder="Search...">
+                                                <span class="input-group-append">
+                                                    <button class="btn" type="submit">
+                                                        <i class="fa fa-search header-nav-top-icon"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer id="footer" class="m-0 border-0">
+        <div class="footer-copyright">
+            <div class="container py-2">
+                <div class="row py-4">
+                    <div class="col text-center">
+                        <ul class="footer-social-icons social-icons social-icons-clean social-icons-icon-light mb-3">
+                            <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                        <p><strong>Gurhan</strong> - © Copyright 2019. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vendor -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="~/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/vendor/jquery.cookie/jquery.cookie.min.js"></script>
+    <script src="~/vendor/popper/umd/popper.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/vendor/common/common.min.js"></script>
+    <script src="~/vendor/jquery.validation/jquery.validate.min.js"></script>
+    <script src="~/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="~/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="~/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+    <script src="~/vendor/isotope/jquery.isotope.min.js"></script>
+    <script src="~/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/vendor/vide/jquery.vide.min.js"></script>
+    <script src="~/vendor/vivus/vivus.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/js/theme.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="~/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="~/js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="~/js/theme.init.js"></script>
+</body>
+</html>
