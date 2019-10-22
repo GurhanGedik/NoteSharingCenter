@@ -68,23 +68,6 @@
                                             </li>
                                             <li class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle" href="#">
-                                                    Home
-                                                </a>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle" href="#">
-                                                    Categories
-                                                </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="page-careers.html">Categories 1</a></li>
-                                                    <li><a class="dropdown-item" href="page-careers.html">Categories 2</a></li>
-                                                    <li><a class="dropdown-item" href="page-careers.html">Categories 3</a></li>
-                                                    <li><a class="dropdown-item" href="page-careers.html">Categories 4</a></li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle" href="#">
                                                     Login
                                                 </a>
                                             </li>
@@ -98,32 +81,11 @@
                                                     Gürhan GEDİK
                                                 </a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="page-careers.html">Manage</a></li>
-                                                    <li><a class="dropdown-item" href="page-careers.html">Logout</a></li>
+                                                    <li><a class="dropdown-item" href="#">Logout</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </nav>
-                                </div>
-                                <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
-                                    <i class="fas fa-bars"></i>
-                                </button>
-                            </div>
-                            <div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2 mr-2 mr-lg-0">
-                                <div class="header-nav-feature header-nav-features-search d-inline-flex">
-                                    <a href="#" class="header-nav-features-toggle" data-focus="headerSearch"><i class="fas fa-search header-nav-top-icon"></i></a>
-                                    <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed" id="headerTopSearchDropdown">
-                                        <form role="search" action="page-search-results.html" method="get">
-                                            <div class="simple-search input-group">
-                                                <input class="form-control text-1" id="headerSearch" name="q" type="search" value="" placeholder="Search...">
-                                                <span class="input-group-append">
-                                                    <button class="btn" type="submit">
-                                                        <i class="fa fa-search header-nav-top-icon"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -132,8 +94,28 @@
             </div>
         </div>
     </header>
-    <div>
-        @RenderBody()
+    <div class="body">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-2 ">
+                <aside class="sidebar mt-2 ml-2">
+                    <h5 class="font-weight-bold">Filters</h5>
+                    <ul class="nav nav-list flex-column">
+                        <li class="nav-item"><a class="nav-link text-dark" href="#">Top Rated</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="#">Last Posts</a></li>
+                    </ul>
+                </aside>
+                <aside class="sidebar mt-2 ml-2">
+                    <h5 class="font-weight-bold">Category</h5>
+                    <ul class="nav nav-list flex-column">
+                        <li class="nav-item"><a class="nav-link text-dark" href="#">Basic Contact Form</a></li>
+                    </ul>
+                </aside>
+            </div>
+            <div class="col-sm-12 col-md-10">
+                @RenderBody()
+            </div>
+        </div>
     </div>
 
     <footer id="footer" class="m-0 border-0">
