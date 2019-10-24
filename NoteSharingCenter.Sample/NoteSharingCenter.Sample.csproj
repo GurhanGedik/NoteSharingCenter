@@ -164,7 +164,9 @@
     <Content Include="css\theme-shop.css" />
     <Content Include="css\theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\blog-11.jpg" />
     <Content Include="img\blog-46.jpg" />
+    <Content Include="index-blog-3.html" />
     <Content Include="js\custom.js" />
     <Content Include="js\demos\demo-architecture-interior.js" />
     <Content Include="js\demos\demo-barber.js" />

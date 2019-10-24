@@ -50,11 +50,19 @@
 
 </head>
 <body class="loading-overlay-showing" data-loading-overlay data-plugin-options="{'hideDelay': 1000}">
-
     <header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
         <div class="header-body border-top-0 header-body-bottom-border">
             <div class="header-container container-fluid px-lg-4">
                 <div class="header-row">
+                    <div class="header-column">
+                        <div class="header-row">
+                            <h1 class="header-logo">
+                                <a href="#">
+                                    <span class="text h4">Note Sharing Center</span>
+                                </a>
+                            </h1>
+                        </div>
+                    </div>
                     <div class="header-column justify-content-end">
                         <div class="header-row">
                             <div class="header-nav header-nav-line header-nav-bottom-line header-nav-line-under-text header-nav-bottom-line-effect-1">
@@ -87,6 +95,9 @@
                                         </ul>
                                     </nav>
                                 </div>
+                                <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
+                                    <i class="fas fa-bars"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -94,6 +105,49 @@
             </div>
         </div>
     </header>
+    @*<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
+            <div class="header-body border-top-0 header-body-bottom-border">
+                <div class="header-container container-fluid px-lg-4">
+                    <div class="header-row">
+                        <div class="header-column justify-content-end">
+                            <div class="header-row">
+                                <div class="header-nav header-nav-line header-nav-bottom-line header-nav-line-under-text header-nav-bottom-line-effect-1">
+                                    <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
+                                        <nav class="collapse">
+                                            <ul class="nav nav-pills" id="mainNav">
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle active" href="/">
+                                                        Note Sharing Center
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        Login
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        Sing Up
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        Gürhan GEDİK
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>*@
     <div class="body">
         <div class="row">
 
@@ -112,7 +166,7 @@
                     </ul>
                 </aside>
             </div>
-            <div class="col-sm-12 col-md-10">
+            <div class="col-sm-12 col-md-10 pr-4">
                 @RenderBody()
             </div>
         </div>
