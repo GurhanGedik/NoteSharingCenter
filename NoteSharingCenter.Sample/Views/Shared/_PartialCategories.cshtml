@@ -1,0 +1,20 @@
+﻿@using NoteSharingCenter.Repository
+@using NoteSharingCenter.Entity
+@{
+    CategoryRepository cr = new CategoryRepository();
+    List<Category> list = cr.GetCategories();
+}
+
+<aside class="sidebar mt-2 ml-2">
+    <h5 class="font-weight-bold">Category</h5>
+    <ul class="nav nav-list flex-column">
+
+        <li class="nav-item"><a class="nav-link text-dark" href="/Home/Index">All Categories</a></li>
+
+        @foreach (Category item in list)
+        {
+            <li class="nav-item"><a class="nav-link text-dark" href="/Category/Select/@item.Id" title="@item.Description">@item.Title</a></li>
+        }
+
+    </ul>
+</aside> 

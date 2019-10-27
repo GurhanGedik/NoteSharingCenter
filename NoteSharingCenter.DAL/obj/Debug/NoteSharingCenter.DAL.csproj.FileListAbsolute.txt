@@ -4,6 +4,8 @@ C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\De
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\EntityFramework.dll
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\FakeData.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\NoteSharingCenter.Entity.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\NoteSharingCenter.Entity.pdb
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\EntityFramework.xml
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\FakeData.pdb
@@ -12,5 +14,3 @@ C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\obj\De
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\obj\Debug\NoteSharingCenter.DAL.csproj.CopyComplete
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\obj\Debug\NoteSharingCenter.DAL.dll
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\obj\Debug\NoteSharingCenter.DAL.pdb
-C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\NoteSharingCenter.Entity.dll
-C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\NoteSharingCenter.Entity.pdb

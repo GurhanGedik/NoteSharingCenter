@@ -3078,6 +3078,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3237,6 +3238,7 @@
     <Content Include="vendor\twentytwenty\scss\foundation.scss" />
     <Content Include="vendor\twentytwenty\scss\twentytwenty-no-compass.scss" />
     <Content Include="vendor\twentytwenty\scss\twentytwenty.scss" />
+    <Content Include="Views\Shared\_PartialCategories.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3247,6 +3249,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NoteSharingCenter.Entity\NoteSharingCenter.Entity.csproj">

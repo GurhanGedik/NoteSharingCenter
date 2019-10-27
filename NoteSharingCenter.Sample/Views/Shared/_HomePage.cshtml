@@ -159,12 +159,7 @@
                         <li class="nav-item"><a class="nav-link text-dark" href="#">Last Posts</a></li>
                     </ul>
                 </aside>
-                <aside class="sidebar mt-2 ml-2">
-                    <h5 class="font-weight-bold">Category</h5>
-                    <ul class="nav nav-list flex-column">
-                        <li class="nav-item"><a class="nav-link text-dark" href="#">Basic Contact Form</a></li>
-                    </ul>
-                </aside>
+                @Html.Partial("_PartialCategories")
             </div>
             <div class="col-sm-12 col-md-10 pr-4">
                 @RenderBody()

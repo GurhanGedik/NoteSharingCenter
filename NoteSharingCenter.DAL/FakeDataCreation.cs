@@ -86,7 +86,7 @@ namespace NoteSharingCenter.DAL
                     Note note = new Note()
                     {
                         Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
-                        Text = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        Text = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(3, 5)),
                         IsDraft = false,
                         LikeCount = FakeData.NumberData.GetNumber(1, 9),
                         Owner = owner,
