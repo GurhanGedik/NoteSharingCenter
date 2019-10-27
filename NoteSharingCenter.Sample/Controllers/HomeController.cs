@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NoteSharingCenter.Entity;
+using NoteSharingCenter.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,9 +13,13 @@ namespace NoteSharingCenter.Sample.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Repository.Test test = new Repository.Test();
-            test.CommentTest();
-            return View();
+            if (TempData["modelNote"] != null)
+            {
+                return View(TempData["modelNote"] as List<Note>);
+            }
+
+            NoteRepository nr = new NoteRepository();
+            return View(nr.GetAllNote());
         }
     }
 }

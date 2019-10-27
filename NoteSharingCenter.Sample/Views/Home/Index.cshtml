@@ -1,31 +1,43 @@
-﻿
+﻿@using NoteSharingCenter.Entity
+@model List<Note>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_HomePage.cshtml";
 }
 <div class="row">
-    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-
-        <div class="card">
-            <img class="card-img-top" src="~/img/blog-11.jpg" alt="Card Image">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-6"><h4 class="card-title mb-1 text-4 font-weight-bold text-color-primary">Card Title</h4></div>
-                    <div class="col-6">
-                        <p class="text-right black mb-0"><span><i class="far fa-clock text-color-primary"></i></span> 01.10.2019</p>
-                        <p class="text-right black pt-0"><span><i class="far fa-user text-color-primary"></i></span> Gürhan GEDİK</p>
+    @foreach (Note item in Model)
+    {
+        <div class="col-md-6 col-lg-4 mb-5 appear-animation " data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+            <div class="card">
+                <img class="card-img-top" src="~/img/blog-11.jpg" alt="@item.Title">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6"><h4 class="card-title mb-1 text-4 font-weight-bold text-color-primary">@item.Title</h4></div>
+                        <div class="col-6">
+                            <p class="text-right black mb-0"><span><i class="far fa-clock text-color-primary"></i></span> @item.ModifiedOn.ToString("dd.MM.yy")</p>
+                            <p class="text-right black pt-0"><span><i class="far fa-user text-color-primary"></i></span> @item.Owner.Name</p>
+                        </div>
                     </div>
-                </div>
 
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus nulla dui, in dapi.</p>
-                <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Read More <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
-                <div class="text-right">
-                    <button type="button" class="mb-1 mt-1 mr-1 btn btn-outline btn-info btn-sm"><i class="far fa-star"></i> 12</button>
-                    <button type="button" class="mb-1 mt-1 mr-1 btn btn-outline btn-info btn-sm"><i class="far fa-comments"></i> Comments</button>
+                    <p class="card-text">
+                        @if (string.IsNullOrEmpty(item.Text) == false && item.Text.Length > 130)
+                        {
+                            @(item.Text.Substring(0, 130) + "...")
+                        }
+                        else
+                        {
+                            @item.Text;
+                        }
+                    </p>
+                    <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Read More <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
+                    <div class="text-right">
+                        <button type="button" class="mb-1 mt-1 mr-1 btn btn-outline btn-info btn-sm"><i class="far fa-star"></i> @item.LikeCount</button>
+                        <button type="button" class="mb-1 mt-1 mr-1 btn btn-outline btn-info btn-sm"><i class="far fa-comments"></i> Comments</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
 </div>
 
 
