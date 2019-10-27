@@ -67,3 +67,17 @@ C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\obj
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\obj\Debug\NoteSharingCenter.Sample.csproj.CopyComplete
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\obj\Debug\NoteSharingCenter.Sample.dll
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\obj\Debug\NoteSharingCenter.Sample.pdb
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\EntityFramework.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\EntityFramework.SqlServer.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharingCenter.Entity.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharingCenter.Repository.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharingCenter.DAL.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharingCenter.Entity.pdb
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharingCenter.Repository.pdb
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharingCenter.Repository.dll.config
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\EntityFramework.xml
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\EntityFramework.SqlServer.xml
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharingCenter.DAL.pdb
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharingCenter.DAL.dll.config
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\FakeData.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\FakeData.pdb
