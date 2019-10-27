@@ -11,6 +11,8 @@ namespace NoteSharingCenter.Sample.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            Repository.Test test = new Repository.Test();
+            test.CommentTest();
             return View();
         }
     }

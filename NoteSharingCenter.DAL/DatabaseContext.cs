@@ -15,5 +15,10 @@ namespace NoteSharingCenter.DAL
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Category> Categorys { get; set; }
         public DbSet<Liked> Likes { get; set; }
+
+        public DatabaseContext()
+        {
+            Database.SetInitializer(new FakeDataCreation());
+        }
     }
 }
