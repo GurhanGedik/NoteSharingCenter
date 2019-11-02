@@ -1,0 +1,11 @@
+/* Add here all your CSS customizations */
+
+
+    .validation-summary-errors ul li {
+        color: red;
+        list-style-type: none;
+    }
+
+    .validation-summary-errors ul {
+        padding-left: 17px;
+    }

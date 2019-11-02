@@ -14,5 +14,10 @@ namespace NoteSharingCenter.Repository
         {
             return note.List();
         }
+
+        public IQueryable<Note> GetAllNoteQueryable()
+        {
+            return note.ListQueryable();
+        }
     }
 }

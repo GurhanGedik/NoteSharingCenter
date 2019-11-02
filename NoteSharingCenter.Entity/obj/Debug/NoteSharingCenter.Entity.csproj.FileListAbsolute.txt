@@ -3,3 +3,4 @@ C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Entity\bin
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Entity\obj\Debug\NoteSharingCenter.Entity.csproj.CoreCompileInputs.cache
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Entity\obj\Debug\NoteSharingCenter.Entity.dll
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Entity\obj\Debug\NoteSharingCenter.Entity.pdb
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Entity\obj\Debug\NoteSharingCenter.Entity.csprojAssemblyReference.cache
