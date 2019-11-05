@@ -131,7 +131,7 @@
     'n_params', 'n_tags', 'ncdf', 'newton', 'noise_hurl',
     'noise_pick', 'noise_scatter', 'noise_slur', 'norm', 'obj_class',
     'obj_destroy', 'obj_hasmethod', 'obj_isa', 'obj_new', 'obj_valid',
-    'objarr', 'on_error', 'on_ioerror', 'online_help', 'openr',
+    'objarr', 'on_error', 'on_ioerror', 'online_help', 'opur',
     'openu', 'openw', 'oplot', 'oploterr', 'orderedhash',
     'p_correlate', 'parse_url', 'particle_trace', 'path_cache', 'path_sep',
     'pcomp', 'plot', 'plot3d', 'plot', 'plot_3dbox',

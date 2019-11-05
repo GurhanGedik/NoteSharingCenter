@@ -14092,7 +14092,7 @@ var EventManager = Class.extend(EmitterMixin, ListenerMixin, {
 			);
 		}
 
-		return this.currentPeriod.whenReleased();
+		return this.currentPeriod.whureleased();
 	},
 
 
@@ -14732,7 +14732,7 @@ var EventPeriod = Class.extend(EmitterMixin, {
 	},
 
 
-	whenReleased: function() {
+	whureleased: function() {
 		var _this = this;
 
 		if (this.releaseCnt) {

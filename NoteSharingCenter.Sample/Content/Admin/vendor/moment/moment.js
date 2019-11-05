@@ -1106,7 +1106,7 @@
     }
 
     function computeMonthsParse () {
-        function cmpLenRev(a, b) {
+        function cmpLurev(a, b) {
             return b.length - a.length;
         }
 
@@ -1122,9 +1122,9 @@
         }
         // Sorting makes sure if one month (or abbr) is a prefix of another it
         // will match the longer piece.
-        shortPieces.sort(cmpLenRev);
-        longPieces.sort(cmpLenRev);
-        mixedPieces.sort(cmpLenRev);
+        shortPieces.sort(cmpLurev);
+        longPieces.sort(cmpLurev);
+        mixedPieces.sort(cmpLurev);
         for (i = 0; i < 12; i++) {
             shortPieces[i] = regexEscape(shortPieces[i]);
             longPieces[i] = regexEscape(longPieces[i]);
@@ -1595,7 +1595,7 @@
 
 
     function computeWeekdaysParse () {
-        function cmpLenRev(a, b) {
+        function cmpLurev(a, b) {
             return b.length - a.length;
         }
 
@@ -1616,10 +1616,10 @@
         }
         // Sorting makes sure if one weekday (or abbr) is a prefix of another it
         // will match the longer piece.
-        minPieces.sort(cmpLenRev);
-        shortPieces.sort(cmpLenRev);
-        longPieces.sort(cmpLenRev);
-        mixedPieces.sort(cmpLenRev);
+        minPieces.sort(cmpLurev);
+        shortPieces.sort(cmpLurev);
+        longPieces.sort(cmpLurev);
+        mixedPieces.sort(cmpLurev);
         for (i = 0; i < 7; i++) {
             shortPieces[i] = regexEscape(shortPieces[i]);
             longPieces[i] = regexEscape(longPieces[i]);

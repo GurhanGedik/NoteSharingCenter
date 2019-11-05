@@ -81,3 +81,5 @@ C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\obj
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\obj\Debug\NoteSharingCenter.Sample.csproj.CopyComplete
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\obj\Debug\NoteSharingCenter.Sample.dll
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\obj\Debug\NoteSharingCenter.Sample.pdb
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharing.Common.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.Sample\bin\NoteSharing.Common.pdb

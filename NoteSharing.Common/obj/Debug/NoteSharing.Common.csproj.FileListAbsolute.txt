@@ -1,0 +1,6 @@
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharing.Common\bin\Debug\NoteSharing.Common.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharing.Common\bin\Debug\NoteSharing.Common.pdb
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharing.Common\obj\Debug\NoteSharing.Common.csprojAssemblyReference.cache
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharing.Common\obj\Debug\NoteSharing.Common.csproj.CoreCompileInputs.cache
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharing.Common\obj\Debug\NoteSharing.Common.dll
+C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharing.Common\obj\Debug\NoteSharing.Common.pdb

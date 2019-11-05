@@ -508,7 +508,7 @@ jQuery.extend(true,_R, {
 
 	manageVideoLayer : function(_nc,opt,recalled,internrecalled) {	
 		if (_R.compare_version(extension).check==="stop") return false;			
-		// YOUTUBE AND VIMEO LISTENRES INITIALISATION		
+		// YOUTUBE AND VIMEO LISTurES INITIALISATION		
 		var _ = _nc.data(),
 			vida = _.videoattributes,
 			vidytid = _.ytid,

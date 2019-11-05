@@ -489,7 +489,7 @@ function getOffsetRectRelativeToArbitraryNode(children, parent) {
 
   var isIE10 = isIE(10);
   var isHTML = parent.nodeName === 'HTML';
-  var childrenRect = getBoundingClientRect(children);
+  var childrurect = getBoundingClientRect(children);
   var parentRect = getBoundingClientRect(parent);
   var scrollParent = getScrollParent(children);
 
@@ -503,10 +503,10 @@ function getOffsetRectRelativeToArbitraryNode(children, parent) {
     parentRect.left = Math.max(parentRect.left, 0);
   }
   var offsets = getClientRect({
-    top: childrenRect.top - parentRect.top - borderTopWidth,
-    left: childrenRect.left - parentRect.left - borderLeftWidth,
-    width: childrenRect.width,
-    height: childrenRect.height
+    top: childrurect.top - parentRect.top - borderTopWidth,
+    left: childrurect.left - parentRect.left - borderLeftWidth,
+    width: childrurect.width,
+    height: childrurect.height
   });
   offsets.marginTop = 0;
   offsets.marginLeft = 0;

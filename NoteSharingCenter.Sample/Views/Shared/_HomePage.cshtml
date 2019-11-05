@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using NoteSharingCenter.Entity
+@{
+    Users user = null;
+    if (Session["User"] != null)
+    {
+        user = Session["User"] as Users;
+    }
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -57,7 +65,7 @@
                     <div class="header-column">
                         <div class="header-row">
                             <h1 class="header-logo">
-                                <a href="#">
+                                <a href="/Home/Index">
                                     <span class="text h4">Note Sharing Center</span>
                                 </a>
                             </h1>
@@ -74,24 +82,43 @@
                                                     Note Sharing Center
                                                 </a>
                                             </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle" href="/Home/Login">
-                                                    Login
-                                                </a>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle" href="#">
-                                                    Sing Up
-                                                </a>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle" href="#">
-                                                    Gürhan GEDİK
-                                                </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Logout</a></li>
-                                                </ul>
-                                            </li>
+                                            @if (user == null)
+                                            {
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="/Home/Login">
+                                                        Login
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="/Home/Register">
+                                                        Sing Up
+                                                    </a>
+                                                </li>
+                                            }
+
+                                            @if (user != null)
+                                            {
+                                                <li class="dropdown">
+
+                                                    @if (user.Name != null && user.Surname != null)
+                                                    {
+                                                        <a class="dropdown-item dropdown-toggle" href="/Home/ShowProfile">
+                                                            @(user.Name + " " + user.Surname)
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a class="dropdown-item dropdown-toggle" href="/Home/ShowProfile">
+                                                            My Account
+                                                        </a>
+                                                    }
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="/Home/ShowProfile">My Profile</a></li>
+                                                        <li><a class="dropdown-item" href="/Home/Logout">Logout</a></li>
+                                                    </ul>
+                                                </li>
+                                            }
+
                                         </ul>
                                     </nav>
                                 </div>
@@ -151,19 +178,8 @@
     <div class="body">
         <div class="row">
 
-            <div class="col-sm-12 col-md-2 ">
-                <aside class="sidebar mt-2 ml-2">
-                    <h5 class="font-weight-bold">Filters</h5>
-                    <ul class="nav nav-list flex-column">
-                        <li class="nav-item"><a class="nav-link text-dark" href="/Home/MostLiked">Top Rate</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="/Home/Index">Last Posts</a></li>
-                    </ul>
-                </aside>
-                @Html.Partial("_PartialCategories")
-            </div>
-            <div class="col-sm-12 col-md-10 pr-4">
-                @RenderBody()
-            </div>
+            @RenderBody()
+
         </div>
     </div>
 

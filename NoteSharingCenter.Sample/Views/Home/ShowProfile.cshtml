@@ -1,0 +1,48 @@
+﻿@using NoteSharingCenter.Entity
+@model Users
+@{
+    ViewBag.Title = "ShowProfile";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+<div class="container">
+    <br />
+    <br />
+
+    <div class="row">
+
+        <div class="col-md-10">
+            <div class="col-md-5">
+                <img src="~/Content/img/@Model.ProfileImageFilename" class="img-circle" width="128" height="128" />
+                <hr />
+                <h3>@(Model.Name + " " + Model.Surname)</h3>
+                <h6>
+                    <b>
+                        About Me
+                    </b>
+                    <br />
+                    @Model.AboutMe
+                </h6>
+                <h6><b>@Html.DisplayNameFor(model => model.Username) : </b>@Model.Username</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.Email) : </b>@Model.Email</h6>
+                <h6><b>Account Creation Date : </b>@Model.CreatedOn</h6>
+
+                <h6><b>Admin :</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input class="form-check-input" type="checkbox" checked="@Model.IsAdmin" disabled></h6>
+
+                <br /><br />
+                <br />
+                <br /><br />
+                <br />
+                <br /><br />
+            </div>
+            
+        </div>
+
+        <div class="col-md-2">
+            <button type="button" class="btn btn-outline-success btn-lg btn-block">Edit Profile</button>
+            <button type="button" class="btn btn-outline-danger btn-sm btn-block">Delete Profile</button>
+        </div>
+
+    </div>
+</div>
+

@@ -298,8 +298,8 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
         return false;
       }
       state.cpp11RawStringDelim = match[1];
-      state.tokenize = tokenRawString;
-      return tokenRawString(stream, state);
+      state.tokenize = tokurawString;
+      return tokurawString(stream, state);
     }
     // Unicode strings/chars.
     if (stream.match(/(u8|u|U|L)/)) {
@@ -332,7 +332,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
 
   // C++11 raw string literal is <prefix>"<delim>( anything )<delim>", where
   // <delim> can be a string up to 16 characters long.
-  function tokenRawString(stream, state) {
+  function tokurawString(stream, state) {
     // Escape characters that have special regex meanings.
     var delim = state.cpp11RawStringDelim.replace(/[^\w\s]/g, '\\$&');
     var match = stream.match(new RegExp(".*?\\)" + delim + '"'));

@@ -3383,7 +3383,7 @@
 		var iRowCount = 0;
 		var asStripeClasses = oSettings.asStripeClasses;
 		var iStripes = asStripeClasses.length;
-		var iOpenRows = oSettings.aoOpenRows.length;
+		var iOpurows = oSettings.aoOpurows.length;
 		var oLang = oSettings.oLanguage;
 		var iInitDisplayStart = oSettings.iInitDisplayStart;
 		var bServerSide = _fnDataSource( oSettings ) == 'ssp';
@@ -11212,7 +11212,7 @@
 		"oLanguage": {
 			/**
 			 * Strings that are used for WAI-ARIA labels and controls only (these are not
-			 * actually visible on the page, but will be read by screenreaders, and thus
+			 * actually visible on the page, but will be read by screureaders, and thus
 			 * must be internationalised as well).
 			 *  @namespace
 			 *  @name DataTable.defaults.language.aria
@@ -13394,7 +13394,7 @@
 		 *  @type array
 		 *  @default []
 		 */
-		"aoOpenRows": [],
+		"aoOpurows": [],
 	
 		/**
 		 * Dictate the positioning of DataTables' control elements - see

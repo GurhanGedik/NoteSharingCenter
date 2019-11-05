@@ -15,6 +15,6 @@ namespace NoteSharingCenter.Entity
         public string Text { get; set; }
 
         public virtual Note Note { get; set; }
-        public virtual EvernoteUser Owner { get; set; }
+        public virtual Users Owner { get; set; }
     }
 }

@@ -119,9 +119,9 @@ var toMarkdown = function(string) {
   string = string.replace(/^(\s{0,3}\d+)\. /g, '$1\\. ');
 
   // Converts lists that have no child lists (of same type) first, then works it's way up
-  var noChildrenRegex = /<(ul|ol)\b[^>]*>(?:(?!<ul|<ol)[\s\S])*?<\/\1>/gi;
-  while(string.match(noChildrenRegex)) {
-    string = string.replace(noChildrenRegex, function(str) {
+  var noChildruregex = /<(ul|ol)\b[^>]*>(?:(?!<ul|<ol)[\s\S])*?<\/\1>/gi;
+  while(string.match(noChildruregex)) {
+    string = string.replace(noChildruregex, function(str) {
       return replaceLists(str);
     });
   }

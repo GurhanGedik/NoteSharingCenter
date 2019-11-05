@@ -8,7 +8,7 @@
 .cm-s-abcdef .CodeMirror-linenumber { color: #FFFFFF; }
 .cm-s-abcdef .CodeMirror-cursor { border-left: 1px solid #00FF00; }
 
-.cm-s-abcdef span.cm-keyword { color: darkgoldenrod; font-weight: bold; }
+.cm-s-abcdef span.cm-keyword { color: darkgoldurod; font-weight: bold; }
 .cm-s-abcdef span.cm-atom { color: #77F; }
 .cm-s-abcdef span.cm-number { color: violet; }
 .cm-s-abcdef span.cm-def { color: #fffabc; }

@@ -255,8 +255,8 @@
     });
   }
 
-  function addClass(editor, lineNr, classes, main, start, end) {
-    var locs = classes.classLocation, line = editor.getLineHandle(lineNr);
+  function addClass(editor, linur, classes, main, start, end) {
+    var locs = classes.classLocation, line = editor.getLineHandle(linur);
     for (var i = 0; i < locs.length; i++) {
       if (main) editor.addLineClass(line, locs[i], classes.chunk);
       if (start) editor.addLineClass(line, locs[i], classes.start);

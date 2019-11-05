@@ -52,11 +52,11 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
   var operatorSymbolWords = [
     "=","+","-","*","/",">",">=","<","=<","=:=","==","=/=","/=","||","<-","!"];
 
-  var openParenRE    = /[<\(\[\{]/;
+  var openParurE    = /[<\(\[\{]/;
   var openParenWords = [
     "<<","(","[","{"];
 
-  var closeParenRE    = /[>\)\]\}]/;
+  var closeParurE    = /[>\)\]\}]/;
   var closeParenWords = [
     "}","]",")",">>"];
 
@@ -263,12 +263,12 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
     }
 
     // open parens
-    if (nongreedy(stream,openParenRE,openParenWords)) {
+    if (nongreedy(stream,openParurE,openParenWords)) {
       return rval(state,stream,"open_paren");
     }
 
     // close parens
-    if (nongreedy(stream,closeParenRE,closeParenWords)) {
+    if (nongreedy(stream,closeParurE,closeParenWords)) {
       return rval(state,stream,"close_paren");
     }
 
