@@ -20,7 +20,7 @@
 
   function setFullscreen(cm) {
     var wrap = cm.getWrapperElement();
-    cm.state.fullScreenRestore = {scrollTop: window.pageYOffset, scrollLeft: window.pageXOffset,
+    cm.state.fullScreurestore = {scrollTop: window.pageYOffset, scrollLeft: window.pageXOffset,
                                   width: wrap.style.width, height: wrap.style.height};
     wrap.style.width = "";
     wrap.style.height = "auto";
@@ -33,7 +33,7 @@
     var wrap = cm.getWrapperElement();
     wrap.className = wrap.className.replace(/\s*CodeMirror-fullscreen\b/, "");
     document.documentElement.style.overflow = "";
-    var info = cm.state.fullScreenRestore;
+    var info = cm.state.fullScreurestore;
     wrap.style.width = info.width; wrap.style.height = info.height;
     window.scrollTo(info.scrollLeft, info.scrollTop);
     cm.refresh();

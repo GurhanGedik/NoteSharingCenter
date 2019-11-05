@@ -1952,6 +1952,7 @@
     <Content Include="Content\css\theme-elements.css" />
     <Content Include="Content\css\theme-shop.css" />
     <Content Include="Content\css\theme.css" />
+    <Content Include="Content\img\avatar.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\img\blog-11.jpg" />
     <Content Include="Content\img\blog-46.jpg" />
@@ -4866,6 +4867,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Init\WebCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -5400,6 +5402,9 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\RegisterOk.cshtml" />
+    <Content Include="Views\Home\UserActivateOk.cshtml" />
+    <Content Include="Views\Home\UserActivateCancel.cshtml" />
+    <Content Include="Views\Home\ShowProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5412,6 +5417,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NoteSharing.Common\NoteSharing.Common.csproj">
+      <Project>{849f2ac2-2340-43c8-8cf3-6e3c5610ddba}</Project>
+      <Name>NoteSharing.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NoteSharingCenter.Entity\NoteSharingCenter.Entity.csproj">
       <Project>{9ec06ad6-ebff-4466-b6ce-adc90b33e08c}</Project>
       <Name>NoteSharingCenter.Entity</Name>
@@ -5420,6 +5429,9 @@
       <Project>{ceef05f9-2538-45a7-9fd4-8889bbbc5c7f}</Project>
       <Name>NoteSharingCenter.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

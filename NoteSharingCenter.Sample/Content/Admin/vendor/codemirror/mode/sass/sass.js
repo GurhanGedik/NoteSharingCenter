@@ -18,7 +18,7 @@ CodeMirror.defineMode("sass", function(config) {
       valueKeywords = cssMode.valueKeywords || {},
       fontProperties = cssMode.fontProperties || {};
 
-  function tokenRegexp(words) {
+  function tokuregexp(words) {
     return new RegExp("^" + words.join("|"));
   }
 
@@ -27,7 +27,7 @@ CodeMirror.defineMode("sass", function(config) {
 
   var operators = ["\\(", "\\)", "=", ">", "<", "==", ">=", "<=", "\\+", "-",
                    "\\!=", "/", "\\*", "%", "and", "or", "not", ";","\\{","\\}",":"];
-  var opRegexp = tokenRegexp(operators);
+  var opRegexp = tokuregexp(operators);
 
   var pseudoElementsRegexp = /^::?[a-zA-Z_][\w\-]*/;
 

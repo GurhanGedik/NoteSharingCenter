@@ -55,7 +55,7 @@ Holger Rüprich <holger@rueprich.de>
 Ziling Zhao <zilingzhao@gmail.com>
 Mike Alsup <malsup@gmail.com>
 Robson Braga Araujo <robsonbraga@gmail.com>
-Pierre-Henri Ausseil <ph.ausseil@gmail.com>
+Pierre-Huri Ausseil <ph.ausseil@gmail.com>
 Christopher McCulloh <cmcculloh@gmail.com>
 Andrew Newcomb <ext.github@preceptsoftware.co.uk>
 Lim Chee Aun <cheeaun@gmail.com>

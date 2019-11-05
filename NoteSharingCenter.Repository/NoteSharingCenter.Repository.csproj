@@ -52,15 +52,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryRepository.cs" />
-    <Compile Include="EvernoteRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="NoteRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="RepositoryLayerResult.cs" />
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NoteSharing.Common\NoteSharing.Common.csproj">
+      <Project>{849f2ac2-2340-43c8-8cf3-6e3c5610ddba}</Project>
+      <Name>NoteSharing.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NoteSharingCenter.DAL\NoteSharingCenter.DAL.csproj">
       <Project>{5ba001f5-86c8-4bc5-a47c-a60096b71a3c}</Project>
       <Name>NoteSharingCenter.DAL</Name>

@@ -65,7 +65,7 @@
                                 <a href="pages-recover-password.html" class="float-right">Lost Password?</a>
                             </div>
                             <div class="input-group">
-                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control form-control-lg",type="password" })
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control form-control-lg", type = "password" })
                                 <span class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fas fa-lock"></i>
@@ -77,6 +77,10 @@
                         <div class="row">
                             <div class="col-sm-8" style="padding:0px;">
                                 @Html.ValidationSummary(false)
+                                @if (ViewBag.SetLink != null)
+                                {
+                                <p class="text-left" style="padding-left: 17px;">Go to <a href="@ViewBag.SetLink">Activate</a></p>
+                                }
                             </div>
                             <div class="col-sm-4 text-right">
                                 <button type="submit" class="btn btn-primary mt-2">Sign In</button>

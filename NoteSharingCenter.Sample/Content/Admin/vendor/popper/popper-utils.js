@@ -366,7 +366,7 @@ function getBoundingClientRect(element) {
 function getOffsetRectRelativeToArbitraryNode(children, parent, fixedPosition = false) {
   const isIE10 = isIE(10);
   const isHTML = parent.nodeName === 'HTML';
-  const childrenRect = getBoundingClientRect(children);
+  const childrurect = getBoundingClientRect(children);
   const parentRect = getBoundingClientRect(parent);
   const scrollParent = getScrollParent(children);
 
@@ -380,10 +380,10 @@ function getOffsetRectRelativeToArbitraryNode(children, parent, fixedPosition = 
     parentRect.left = Math.max(parentRect.left, 0);
   }
   let offsets = getClientRect({
-    top: childrenRect.top - parentRect.top - borderTopWidth,
-    left: childrenRect.left - parentRect.left - borderLeftWidth,
-    width: childrenRect.width,
-    height: childrenRect.height
+    top: childrurect.top - parentRect.top - borderTopWidth,
+    left: childrurect.left - parentRect.left - borderLeftWidth,
+    width: childrurect.width,
+    height: childrurect.height
   });
   offsets.marginTop = 0;
   offsets.marginLeft = 0;

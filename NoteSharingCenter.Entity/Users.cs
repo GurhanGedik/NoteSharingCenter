@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace NoteSharingCenter.Entity
 {
-    [Table("EvernoteUsers")]
-    public class EvernoteUser:MyEntityBase
+    [Table("Users")]
+    public class Users : MyEntityBase
     {
         [StringLength(30)]
         public string Name { get; set; }
@@ -25,6 +25,12 @@ namespace NoteSharingCenter.Entity
 
         [Required, StringLength(30)]
         public string Password { get; set; }
+
+        [StringLength(500)]
+        public string AboutMe { get; set; }
+
+        [StringLength(200)]
+        public string ProfileImageFilename { get; set; }
 
         [Required]
         public Guid ActiveteGuid { get; set; }

@@ -10,7 +10,7 @@ namespace NoteSharingCenter.DAL
 {
     public class DatabaseContext:DbContext
     {
-        public DbSet<EvernoteUser> EvernoteUsers { get; set; }
+        public DbSet<Users> Users { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Category> Categorys { get; set; }

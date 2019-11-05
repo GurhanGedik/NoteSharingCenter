@@ -1,4 +1,5 @@
-﻿using NoteSharingCenter.Entity;
+﻿using NoteSharing.Common;
+using NoteSharingCenter.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -42,7 +43,7 @@ namespace NoteSharingCenter.Repository
                 DateTime now = DateTime.Now;
                 o.CreatedOn = now;
                 o.ModifiedOn = now;
-                o.ModifiedUsername = "System";
+                o.ModifiedUsername = App.Common.GetUsername();
             }
             return Save();
         }
@@ -53,7 +54,7 @@ namespace NoteSharingCenter.Repository
             {
                 MyEntityBase o = obj as MyEntityBase;
                 o.ModifiedOn = DateTime.Now;
-                o.ModifiedUsername = "System";
+                o.ModifiedUsername = App.Common.GetUsername();
             }
             return Save();
         }

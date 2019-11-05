@@ -12,7 +12,7 @@ namespace NoteSharingCenter.DAL
     {
         protected override void Seed(DatabaseContext context)
         {
-            EvernoteUser admin = new EvernoteUser()
+            Users admin = new Users()
             {
                 Name = "Gurhan",
                 Surname = "GEDIK",
@@ -22,13 +22,15 @@ namespace NoteSharingCenter.DAL
                 IsAdmin = true,
                 Username = "q",
                 Password = "q",
+                ProfileImageFilename="avatar.png",
+                AboutMe= FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(3, 5)),
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now,
                 ModifiedUsername = "Admin"
             };
-            context.EvernoteUsers.Add(admin);
+            context.Users.Add(admin);
 
-            EvernoteUser user = new EvernoteUser()
+            Users user = new Users()
             {
                 Name = "Gurhan",
                 Surname = "GEDIK",
@@ -38,15 +40,17 @@ namespace NoteSharingCenter.DAL
                 IsAdmin = false,
                 Username = "w",
                 Password = "w",
+                ProfileImageFilename = "avatar.png",
+                AboutMe = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(3, 5)),
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now,
                 ModifiedUsername = "gurhangedik"
             };
-            context.EvernoteUsers.Add(user);
+            context.Users.Add(user);
 
             for (int i = 0; i < 8; i++)
             {
-                EvernoteUser users = new EvernoteUser()
+                Users users = new Users()
                 {
                     Name = FakeData.NameData.GetFirstName(),
                     Surname = FakeData.NameData.GetSurname(),
@@ -56,15 +60,17 @@ namespace NoteSharingCenter.DAL
                     IsAdmin = false,
                     Username = "user" + i,
                     Password = "123",
+                    ProfileImageFilename = "avatar.png",
+                    AboutMe = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(3, 5)),
                     CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                     ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                     ModifiedUsername = "user" + i
                 };
-                context.EvernoteUsers.Add(users);
+                context.Users.Add(users);
             }
 
             context.SaveChanges();
-            List<EvernoteUser> userList = context.EvernoteUsers.ToList();
+            List<Users> userList = context.Users.ToList();
 
             //Add fake categories
             for (int i = 0; i < 10; i++)
@@ -82,7 +88,7 @@ namespace NoteSharingCenter.DAL
                 //Add fake notes
                 for (int k = 0; k < FakeData.NumberData.GetNumber(5, 10); k++)
                 {
-                    EvernoteUser owner = userList[FakeData.NumberData.GetNumber(0, userList.Count - 1)];
+                    Users owner = userList[FakeData.NumberData.GetNumber(0, userList.Count - 1)];
                     Note note = new Note()
                     {
                         Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
@@ -99,7 +105,7 @@ namespace NoteSharingCenter.DAL
                     //Add fake comments
                     for (int j = 0; j < FakeData.NumberData.GetNumber(3, 5); j++)
                     {
-                        EvernoteUser commentOwner = userList[FakeData.NumberData.GetNumber(0, userList.Count - 1)];
+                        Users commentOwner = userList[FakeData.NumberData.GetNumber(0, userList.Count - 1)];
                         Comment comment = new Comment()
                         {
                             Text = FakeData.TextData.GetSentence(),

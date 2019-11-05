@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NoteSharing.Common;
+using NoteSharingCenter.Sample.Init;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,7 @@ namespace NoteSharingCenter.Sample
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            App.Common = new WebCommon();
         }
     }
 }

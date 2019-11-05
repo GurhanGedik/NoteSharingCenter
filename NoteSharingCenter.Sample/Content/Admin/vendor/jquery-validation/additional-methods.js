@@ -360,7 +360,7 @@ $.validator.addMethod( "creditcard", function( value, element ) {
 
 /* NOTICE: Modified version of Castle.Components.Validator.CreditCardValidator
  * Redistributed under the the Apache License 2.0 at http://www.apache.org/licenses/LICENSE-2.0
- * Valid Types: mastercard, visa, amex, dinersclub, enroute, discover, jcb, unknown, all (overrides all other settings)
+ * Valid Types: mastercard, visa, amex, dinersclub, uroute, discover, jcb, unknown, all (overrides all other settings)
  */
 $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
 	if ( /[^0-9\-]+/.test( value ) ) {
@@ -383,7 +383,7 @@ $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
 	if ( param.dinersclub ) {
 		validTypes |= 0x0008;
 	}
-	if ( param.enroute ) {
+	if ( param.uroute ) {
 		validTypes |= 0x0010;
 	}
 	if ( param.discover ) {
@@ -410,7 +410,7 @@ $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
 	if ( validTypes & 0x0008 && /^(3(0[012345]|[68]))/.test( value ) ) { // Dinersclub
 		return value.length === 14;
 	}
-	if ( validTypes & 0x0010 && /^(2(014|149))/.test( value ) ) { // Enroute
+	if ( validTypes & 0x0010 && /^(2(014|149))/.test( value ) ) { // uroute
 		return value.length === 15;
 	}
 	if ( validTypes & 0x0020 && /^(6011)/.test( value ) ) { // Discover
