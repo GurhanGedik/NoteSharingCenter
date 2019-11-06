@@ -4868,6 +4868,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Init\WebCommon.cs" />
+    <Compile Include="Models\AppearanceModels.cs" />
+    <Compile Include="Models\ErrorViewModel.cs" />
+    <Compile Include="Models\InfoViewModel.cs" />
+    <Compile Include="Models\OkViewModel.cs" />
+    <Compile Include="Models\WarningViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -5401,10 +5406,11 @@
     <Content Include="Views\Shared\_PartialCategories.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
-    <Content Include="Views\Home\RegisterOk.cshtml" />
-    <Content Include="Views\Home\UserActivateOk.cshtml" />
-    <Content Include="Views\Home\UserActivateCancel.cshtml" />
     <Content Include="Views\Home\ShowProfile.cshtml" />
+    <Content Include="Views\Shared\Ok.cshtml" />
+    <Content Include="Views\Shared\Warning.cshtml" />
+    <Content Include="Views\Shared\Info.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5414,7 +5420,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NoteSharing.Common\NoteSharing.Common.csproj">

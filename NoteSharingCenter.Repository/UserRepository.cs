@@ -35,6 +35,7 @@ namespace NoteSharingCenter.Repository
                 {
                     Username = data.Username,
                     Email = data.EMail,
+                    ProfileImageFilename= "avatar.png",
                     Password = data.Password,
                     ActiveteGuid = Guid.NewGuid(),
                     IsActive = false,
