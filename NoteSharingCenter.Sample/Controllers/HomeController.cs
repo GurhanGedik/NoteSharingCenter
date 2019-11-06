@@ -2,6 +2,7 @@
 using NoteSharingCenter.Entity.Messages;
 using NoteSharingCenter.Entity.ValueObjects;
 using NoteSharingCenter.Repository;
+using NoteSharingCenter.Sample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace NoteSharingCenter.Sample.Controllers
 {
     public class HomeController : Controller
     {
-        
+
         public ActionResult Index()
         {
             NoteRepository nr = new NoteRepository();
@@ -105,18 +106,20 @@ namespace NoteSharingCenter.Sample.Controllers
                     return View(model);
                 }
 
-                return RedirectToAction("RegisterOk");
+                OkViewModel okModel = new OkViewModel()
+                {
+                    Title = "Registration Successful",
+                    RedirectinUrl = "/Home/Login",
+                };
+                okModel.Items.Add("Please activate your account by clicking on the activation link we sent to your email address. If you don't activate your account, you won't be able to add notes and make ratings.");
+
+                return View("Ok", okModel);
             }
 
             return View(model);
         }
 
         public ActionResult ActiveteUser()
-        {
-            return View();
-        }
-
-        public ActionResult RegisterOk()
         {
             return View();
         }
@@ -128,29 +131,21 @@ namespace NoteSharingCenter.Sample.Controllers
 
             if (user.Errors.Count > 0)
             {
-                TempData["errors"] = user.Errors;
-                return RedirectToAction("UserActivateCancel");
+                ErrorViewModel erModel = new ErrorViewModel()
+                {
+                    Title = "Account not valid.",
+                    Items = user.Errors
+                };
+                return View("Error", erModel);
             }
 
-            return RedirectToAction("UserActivateOk");
-        }
-
-        public ActionResult UserActivateOk()
-        {
-
-            return View();
-        }
-
-        public ActionResult UserActivateCancel()
-        {
-            List<ErrorMessageObj> errors = null;
-
-            if (TempData["errors"] != null)
+            OkViewModel okModel = new OkViewModel()
             {
-                errors = TempData["errors"] as List<ErrorMessageObj>;
-            }
+                Title = "Account Activation Successful",
+                RedirectinUrl = "/Home/Login"
+            };
 
-            return View(errors);
+            return View("Ok", okModel);
         }
 
         public ActionResult Logout()
@@ -172,7 +167,17 @@ namespace NoteSharingCenter.Sample.Controllers
             }
             UserRepository ur = new UserRepository();
             RepositoryLayerResult<Users> re = ur.GetUserById(currentUser.Id);
-            
+
+            if (re.Errors.Count > 0)
+            {
+                ErrorViewModel erModel = new ErrorViewModel()
+                {
+                    Title = "An error occurred",
+                    Items = re.Errors,
+                    RedirectingTimeout=15
+                };
+                return View("Error", erModel);
+            }
             return View(re.Result);
         }
 
@@ -191,7 +196,7 @@ namespace NoteSharingCenter.Sample.Controllers
         {
             return View();
         }
-
+        
         #endregion
     }
 }

@@ -1,4 +1,11 @@
-﻿<!doctype html>
+﻿@using NoteSharingCenter.Sample.Models
+@model WarningViewModel
+
+@{
+    Layout = null;
+}
+
+<!doctype html>
 <html class="fixed">
 <head>
 
@@ -37,11 +44,16 @@
     <section class="body-sign">
         <div class="center-sign">
             <div class="col-md-12">
-                <h2 class="title text-uppercase font-weight-bold m-0 text-center mb-3"><i class="fas fa-spinner fa-pulse"></i> Redirecting... <span id="kalan"></span></h2>
+                <h2 class="title text-uppercase font-weight-bold m-0 text-center mb-3"><i class="fas fa-spinner fa-pulse"></i> @Model.Header <span id="timer"></span></h2>
             </div>
-            <div class="col-md-12">
-                <p class="h5 text-center"><i class="far fa-thumbs-up" style="color:steelblue;"></i> Account Activation Successful</p>
-                
+            <div class="col-md-12 text-center">
+                <p class="h5"><i class="fas fa-exclamation-triangle" style="color:yellow;"></i> @Model.Title</p>
+                <p>
+                    @foreach (string item in Model.Items)
+                    {
+                        @item <br />
+                    }
+                </p>
             </div>
 
 
@@ -68,22 +80,30 @@
     <!-- Theme Initialization Files -->
     <script src="~/Content/Admin/js/theme.init.js"></script>
 
-
+    @{
+        string wl = string.Empty;
+        int time = 0;
+        if (Model.IsRedirecting)
+        {
+            wl = Model.RedirectinUrl;
+            time = Model.RedirectingTimeout;
+        }
+    }
     <script>
-        var sure = 5;
-        var saniye = document.getElementById("kalan").innerHTML = sure;
+        var time = @time;
+        var second = document.getElementById("timer").innerHTML = time;
 
         function final() {
-            if (saniye != 0) {
-                saniye -= 1;
-                document.getElementById("kalan").innerHTML = saniye;
+            if (second != 0) {
+                second -= 1;
+                document.getElementById("timer").innerHTML = second;
             }
 
             else {
-                window.location = "/Home/Index"
+                window.location = "@wl"
                 return;
             }
-            setTimeout("final()", 500);
+            setTimeout("final()", 1000);
         }
         final();
     </script>
