@@ -1953,8 +1953,9 @@
     <Content Include="Content\css\theme-shop.css" />
     <Content Include="Content\css\theme.css" />
     <Content Include="Content\img\avatar.png" />
-    <Content Include="Global.asax" />
     <Content Include="Content\img\blog-11.jpg" />
+    <Content Include="forms-basic.html" />
+    <Content Include="Global.asax" />
     <Content Include="Content\img\blog-46.jpg" />
     <Content Include="index-blog-3.html" />
     <Content Include="Content\js\custom.js" />
@@ -4859,6 +4860,7 @@
     <Content Include="Content\vendor\vivus\vivus.min.js" />
     <Content Include="pages-signin.html" />
     <Content Include="pages-signup.html" />
+    <Content Include="pages-user-profile.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -5411,6 +5413,7 @@
     <Content Include="Views\Shared\Warning.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

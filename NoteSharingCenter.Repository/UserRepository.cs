@@ -12,7 +12,8 @@ namespace NoteSharingCenter.Repository
 {
     public class UserRepository
     {
-        private Repository<Users> ur = new Repository<Users>();        
+        private Repository<Users> ur = new Repository<Users>();
+
 
         public RepositoryLayerResult<Users> RegisterUser(RegisterViewModel data)
         {
@@ -35,7 +36,7 @@ namespace NoteSharingCenter.Repository
                 {
                     Username = data.Username,
                     Email = data.EMail,
-                    ProfileImageFilename= "avatar.png",
+                    ProfileImageFilename = "avatar.png",
                     Password = data.Password,
                     ActiveteGuid = Guid.NewGuid(),
                     IsActive = false,
@@ -102,12 +103,100 @@ namespace NoteSharingCenter.Repository
         {
             RepositoryLayerResult<Users> layerResult = new RepositoryLayerResult<Users>();
             layerResult.Result = ur.Find(x => x.Id == id);
-            if (layerResult.Result==null)
+            if (layerResult.Result == null)
             {
                 layerResult.AddError(ErrorMessageCode.UserNotFound, "User not found.");
             }
 
             return layerResult;
+        }
+
+        public RepositoryLayerResult<Users> UpdateProfile(Users data)
+        {
+
+            Users user = ur.Find(x => x.Id != data.Id && (x.Username == data.Username || x.Email == data.Email));
+            RepositoryLayerResult<Users> layerResult = new RepositoryLayerResult<Users>();
+
+            if (user != null && user.Id != data.Id)
+            {
+                if (user.Username == data.Username)
+                {
+                    layerResult.AddError(ErrorMessageCode.UsernameAlreadyExists, "Username registered.");
+                }
+
+                if (user.Email == data.Email)
+                {
+                    layerResult.AddError(ErrorMessageCode.EmailAlreadyExists, "E-mail address already registered.");
+                }
+
+                return layerResult;
+            }
+
+            layerResult.Result = ur.Find(x => x.Id == data.Id);
+            layerResult.Result.Email = data.Email;
+            layerResult.Result.Name = data.Name;
+            layerResult.Result.Surname = data.Surname;
+            layerResult.Result.AboutMe = data.AboutMe;
+            layerResult.Result.Password = data.Password;
+            layerResult.Result.Username = data.Username;
+
+            if (string.IsNullOrEmpty(data.ProfileImageFilename) == false)
+            {
+                layerResult.Result.ProfileImageFilename = data.ProfileImageFilename;
+            }
+
+            if (ur.Update(layerResult.Result) == 0)
+            {
+                layerResult.AddError(ErrorMessageCode.ProfileCouldNotUpdated, "Failed to update profile.");
+            }
+
+            return layerResult;
+        }
+        private Repository<Note> nr = new Repository<Note>();
+        private Repository<Liked> lr = new Repository<Liked>();
+        private Repository<Comment> cr = new Repository<Comment>();
+        public RepositoryLayerResult<Users> RemoveUserById(int id)
+        {
+            RepositoryLayerResult<Users> re = new RepositoryLayerResult<Users>();
+            List<Note> note = nr.List(x => x.Owner.Id == id);
+            List<Comment> Comment = cr.List(x => x.Owner.Id == id);
+            List<Liked> Liked = lr.List(x => x.LikedUser.Id == id);
+            foreach (var item in Comment)
+            {
+                cr.Delete(item);
+            }
+            foreach (var item in Liked)
+            {
+                lr.Delete(item);
+            }
+            foreach (var item in note)
+            {
+                List<Comment> Commentt = cr.List(x => x.Note.Id == item.Id);
+                List<Liked> Likedd = lr.List(x => x.Note.Id == item.Id);
+                foreach (var itemm in Commentt)
+                {
+                    cr.Delete(itemm);
+                }
+                foreach (var itemm in Likedd)
+                {
+                    lr.Delete(itemm);
+                }
+                nr.Delete(item);
+            }
+            Users user = ur.Find(x => x.Id == id);
+            if (user != null)
+            {
+                if (ur.Delete(user) == 0)
+                {
+                    re.AddError(ErrorMessageCode.UserCouldNotRemove, "The user could not be deleted.");
+                    return re;
+                }
+            }
+            else
+            {
+                re.AddError(ErrorMessageCode.UserCouldNotFind, "User not found.");
+            }
+            return re;
         }
     }
 }

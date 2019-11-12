@@ -39,8 +39,8 @@
         </div>
 
         <div class="col-md-2">
-            <button type="button" class="btn btn-outline-success btn-lg btn-block">Edit Profile</button>
-            <button type="button" class="btn btn-outline-danger btn-sm btn-block">Delete Profile</button>
+            <a href="~/Home/EditProfile/@Model.Id" class="btn btn-outline-success btn-lg btn-block">Edit Profile</a>
+            <a href="~/Home/DeleteProfile/@Model.Id" class="btn btn-outline-danger btn-sm btn-block" onclick="return confirm('Hesabınızı silmek istediğinize emin misiniz?')">Delete Profile</a>
         </div>
 
     </div>
