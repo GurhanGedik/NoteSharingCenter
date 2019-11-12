@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryRepository.cs" />
+    <Compile Include="CommentRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="LikedRepository.cs" />
     <Compile Include="NoteRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />

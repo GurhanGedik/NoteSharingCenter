@@ -174,7 +174,7 @@ namespace NoteSharingCenter.Sample.Controllers
                 {
                     Title = "An error occurred",
                     Items = re.Errors,
-                    RedirectingTimeout=15
+                    RedirectingTimeout = 15
                 };
                 return View("Error", erModel);
             }
@@ -183,20 +183,83 @@ namespace NoteSharingCenter.Sample.Controllers
 
         public ActionResult EditProfile()
         {
-            return View();
+            Users currentUser = Session["User"] as Users;
+            UserRepository ur = new UserRepository();
+            RepositoryLayerResult<Users> re = ur.GetUserById(currentUser.Id);
+
+            if (re.Errors.Count > 0)
+            {
+                ErrorViewModel erModel = new ErrorViewModel()
+                {
+                    Title = "An error occurred",
+                    Items = re.Errors,
+                    RedirectingTimeout = 15
+                };
+                return View("Error", erModel);
+            }
+            return View(re.Result);
         }
 
         [HttpPost]
-        public ActionResult EditProfile(Users model)
+        public ActionResult EditProfile(Users model, HttpPostedFileBase ProfileImage)
         {
-            return View();
-        }
+            ModelState.Remove("ModifiedUsername");
 
-        public ActionResult DeleteProfile()
-        {
-            return View();
+            if (ModelState.IsValid)
+            {
+                if (ProfileImage != null &&
+                    (ProfileImage.ContentType == "image/jpeg" ||
+                    ProfileImage.ContentType == "image/jpg" ||
+                    ProfileImage.ContentType == "image/png"))
+                {
+                    string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
+
+                    ProfileImage.SaveAs(Server.MapPath($"~/Content/img/{filename}"));
+                    model.ProfileImageFilename = filename;
+                }
+                UserRepository ur = new UserRepository();
+                RepositoryLayerResult<Users> re = ur.UpdateProfile(model);
+
+                if (re.Errors.Count > 0)
+                {
+                    ErrorViewModel errorNotifyObj = new ErrorViewModel()
+                    {
+                        Items = re.Errors,
+                        Title = "Failed to update profile.",
+                        RedirectinUrl = "/Home/EditProfile"
+                    };
+
+                    return View("Error", errorNotifyObj);
+                }
+                Session["User"] = re.Result;
+                return RedirectToAction("ShowProfile");
+            }
+
+            return View(model);
         }
         
+        public ActionResult DeleteProfile()
+        {
+            Users currentUser = Session["User"] as Users;
+
+            UserRepository ur = new UserRepository();
+            RepositoryLayerResult<Users> re = ur.RemoveUserById(currentUser.Id);
+
+            if (re.Errors.Count>0)
+            {
+                ErrorViewModel messages = new ErrorViewModel()
+                {
+                    Items = re.Errors,
+                    Title = "Failed to Delete Profile",
+                    RedirectinUrl = "/Home/ShowProfile"
+                };
+                return View("Error", messages);
+            }
+            Session.Clear();
+
+            return RedirectToAction("Index");
+        }
+
         #endregion
     }
 }

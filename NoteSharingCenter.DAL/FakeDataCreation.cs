@@ -34,7 +34,7 @@ namespace NoteSharingCenter.DAL
             {
                 Name = "Gurhan",
                 Surname = "GEDIK",
-                Email = "gurhangedik@hotmail.com",
+                Email = "gurhangedik2@hotmail.com",
                 ActiveteGuid = Guid.NewGuid(),
                 IsActive = true,
                 IsAdmin = false,
