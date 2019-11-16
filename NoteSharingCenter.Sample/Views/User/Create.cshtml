@@ -1,0 +1,151 @@
+﻿@model NoteSharingCenter.Entity.Users
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+
+<!doctype html>
+<html class="fixed">
+<head>
+
+    <!-- Basic -->
+    <meta charset="UTF-8">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="~/Content/Admin/vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/animate/animate.css">
+
+    <link rel="stylesheet" href="~/Content/Admin/vendor/font-awesome/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="~/Content/Admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/Content/Admin/css/theme.css" />
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="~/Content/Admin/css/skins/default.css" />
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="~/Content/Admin/css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="~/Content/Admin/vendor/modernizr/modernizr.js"></script>
+
+</head>
+<body>
+
+
+    <section class="body container">
+        <section role="main" class="content-body card-margin">
+            @using (Html.BeginForm())
+            {
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <h4>Add User</h4>
+                        <hr />
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <div class="form-group row">
+                            <label class="col-lg-2 control-label text-lg-right pt-2" for="inputDefault">Name</label>
+                            <div class="col-lg-6">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 control-label text-lg-right pt-2" for="inputDefault">Surname</label>
+                            <div class="col-lg-6">
+                                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control", type = "text", id = "inputDefault" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 control-label text-lg-right pt-2" for="inputDefault">Username</label>
+                            <div class="col-lg-6">
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", type = "text", id = "inputDefault" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 control-label text-lg-right pt-2" for="inputDefault">Email</label>
+                            <div class="col-lg-6">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "text", id = "inputDefault" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 control-label text-lg-right pt-2" for="inputDefault">
+                                Password
+                            </label>
+                            <div class="col-lg-6">
+                                @Html.EditorFor(model => model.Password
+, new { htmlAttributes = new { @class = "form-control", type = "text", id = "inputDefault" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 control-label text-lg-right pt-2" for="inputDefault">AboutMe</label>
+                            <div class="col-lg-6">
+                                @Html.TextAreaFor(model => model.AboutMe, new { @class = "form-control", rows = 3 })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-2 control-label text-lg-right pt-2" for="inputDefault">IsActive</label>
+                            <div class="col-lg-6">
+                                @Html.EditorFor(model => model.IsActive)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-2 control-label text-lg-right pt-2" for="inputDefault">IsAdmin</label>
+                            <div class="col-lg-6">
+                                @Html.EditorFor(model => model.IsAdmin)
+                            </div>
+                        </div>
+
+                        <div class="text-right pt-3">
+                            <input type="submit" value="Save" class="mb-1 mt-1 mr-1 btn btn-success" />
+                            @Html.ActionLink("Cancel", "Index", null, new { @class = "mb-1 mt-1 mr-1 btn btn-warning" })
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </section>
+
+    </section>
+
+
+    <!-- Vendor -->
+    <script src="~/Content/Admin/vendor/jquery/jquery.js"></script>
+    <script src="~/Content/Admin/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="~/Content/Admin/vendor/popper/umd/popper.min.js"></script>
+    <script src="~/Content/Admin/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="~/Content/Admin/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/Admin/vendor/common/common.js"></script>
+    <script src="~/Content/Admin/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="~/Content/Admin/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+    <script src="~/Content/Admin/vendor/jquery-placeholder/jquery-placeholder.js"></script>
+
+    <!-- Specific Page Vendor -->
+    <script src="~/Content/Admin/vendor/autosize/autosize.js"></script>
+    <script src="~/Content/Admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/Content/Admin/js/theme.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="~/Content/Admin/js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="~/Content/Admin/js/theme.init.js"></script>
+
+</body>
+</html>

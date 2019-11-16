@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NoteSharingCenter.Repository
 {
-    public class Repository<T> : RepositoryBase,IRepository<T> where T : class
+    public class Repository<T> : RepositoryBase, IDataAccess<T> where T : class
     {
         private DbSet<T> _objectSet;
 

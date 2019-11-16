@@ -1,0 +1,50 @@
+﻿@model NoteSharingCenter.Entity.Users
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+
+<div class="container">
+    <br />
+    <br />
+
+    <div class="row">
+
+        <div class="col-md-10">
+            <div class="col-md-5">
+
+                <h4>User Details</h4>
+                <hr />
+                <h6><b>@Html.DisplayNameFor(model => model.Name) : </b>@Model.Name</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.Surname) : </b>@Model.Surname</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.Username) : </b>@Model.Username</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.Email) : </b>@Model.Email</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.Password) : </b>@Model.Password</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.AboutMe) : </b>@Model.AboutMe</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.IsActive) : </b>@Model.IsActive</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.IsAdmin) : </b>@Model.IsAdmin</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.CreatedOn) : </b>@Model.CreatedOn</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.ModifiedOn) : </b>@Model.ModifiedOn</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.ModifiedUsername) : </b>@Model.ModifiedUsername</h6>
+
+                <br /><br />
+                <br />
+                <br /><br />
+                <br />
+                <br /><br /><br />
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+            <a href="~/User/Edit/@Model.Id" class="btn btn-outline-success btn-lg btn-block">Edit User</a>
+            <a href="~/User/Index" class="btn btn-outline-warning btn-sm btn-block" onclick="return confirm('Hesabınızı silmek istediğinize emin misiniz?')">Cancel</a>
+        </div>
+
+
+
+    </div>
+</div>

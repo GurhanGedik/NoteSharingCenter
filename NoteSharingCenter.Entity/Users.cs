@@ -29,10 +29,10 @@ namespace NoteSharingCenter.Entity
         [StringLength(500)]
         public string AboutMe { get; set; }
 
-        [StringLength(200)]
+        [StringLength(200), ScaffoldColumn(false)]
         public string ProfileImageFilename { get; set; }
 
-        [Required]
+        [Required, ScaffoldColumn(false)]
         public Guid ActiveteGuid { get; set; }
 
         public bool IsActive { get; set; }

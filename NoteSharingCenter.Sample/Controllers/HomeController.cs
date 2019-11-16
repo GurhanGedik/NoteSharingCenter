@@ -14,11 +14,14 @@ namespace NoteSharingCenter.Sample.Controllers
 {
     public class HomeController : Controller
     {
+        private NoteRepository nr = new NoteRepository();
+        private CategoryRepository cr = new CategoryRepository();
+        private UserRepository ur = new UserRepository();
 
         public ActionResult Index()
         {
-            NoteRepository nr = new NoteRepository();
-            return View(nr.GetAllNoteQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
+            
+            return View(nr.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
 
         #region Filter
@@ -30,8 +33,8 @@ namespace NoteSharingCenter.Sample.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            CategoryRepository cr = new CategoryRepository();
-            Category cat = cr.GetCategoryById(id.Value);
+            
+            Category cat = cr.Find(x => x.Id == id.Value);
 
             if (cat == null)
             {
@@ -43,8 +46,7 @@ namespace NoteSharingCenter.Sample.Controllers
 
         public ActionResult MostLiked()
         {
-            NoteRepository nr = new NoteRepository();
-            return View("Index", nr.GetAllNote().OrderByDescending(x => x.LikeCount).ToList());
+            return View("Index", nr.ListQueryable().OrderByDescending(x => x.LikeCount).ToList());
         }
 
         #endregion
@@ -61,7 +63,7 @@ namespace NoteSharingCenter.Sample.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserRepository ur = new UserRepository();
+                
                 RepositoryLayerResult<Users> re = ur.LoginUser(model);
 
                 if (re.Errors.Count > 0)
@@ -97,7 +99,6 @@ namespace NoteSharingCenter.Sample.Controllers
 
             if (ModelState.IsValid)
             {
-                UserRepository ur = new UserRepository();
                 RepositoryLayerResult<Users> re = ur.RegisterUser(model);
 
                 if (re.Errors.Count > 0)
@@ -126,8 +127,7 @@ namespace NoteSharingCenter.Sample.Controllers
 
         public ActionResult UserActivate(Guid id)
         {
-            UserRepository er = new UserRepository();
-            RepositoryLayerResult<Users> user = er.ActivateUser(id);
+            RepositoryLayerResult<Users> user = ur.ActivateUser(id);
 
             if (user.Errors.Count > 0)
             {
@@ -165,7 +165,6 @@ namespace NoteSharingCenter.Sample.Controllers
             {
                 return RedirectToAction("Login");
             }
-            UserRepository ur = new UserRepository();
             RepositoryLayerResult<Users> re = ur.GetUserById(currentUser.Id);
 
             if (re.Errors.Count > 0)
@@ -184,7 +183,6 @@ namespace NoteSharingCenter.Sample.Controllers
         public ActionResult EditProfile()
         {
             Users currentUser = Session["User"] as Users;
-            UserRepository ur = new UserRepository();
             RepositoryLayerResult<Users> re = ur.GetUserById(currentUser.Id);
 
             if (re.Errors.Count > 0)
@@ -217,7 +215,6 @@ namespace NoteSharingCenter.Sample.Controllers
                     ProfileImage.SaveAs(Server.MapPath($"~/Content/img/{filename}"));
                     model.ProfileImageFilename = filename;
                 }
-                UserRepository ur = new UserRepository();
                 RepositoryLayerResult<Users> re = ur.UpdateProfile(model);
 
                 if (re.Errors.Count > 0)
@@ -237,15 +234,14 @@ namespace NoteSharingCenter.Sample.Controllers
 
             return View(model);
         }
-        
+
         public ActionResult DeleteProfile()
         {
             Users currentUser = Session["User"] as Users;
 
-            UserRepository ur = new UserRepository();
             RepositoryLayerResult<Users> re = ur.RemoveUserById(currentUser.Id);
 
-            if (re.Errors.Count>0)
+            if (re.Errors.Count > 0)
             {
                 ErrorViewModel messages = new ErrorViewModel()
                 {

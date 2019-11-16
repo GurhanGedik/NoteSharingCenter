@@ -77,11 +77,6 @@
                                 <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
                                     <nav class="collapse">
                                         <ul class="nav nav-pills" id="mainNav">
-                                            <li class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle active" href="/">
-                                                    Note Sharing Center
-                                                </a>
-                                            </li>
                                             @if (user == null)
                                             {
                                                 <li class="dropdown">
@@ -100,15 +95,36 @@
                                             {
                                                 <li class="dropdown">
 
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        Control Board
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="/Home/Logout">New Note</a></li>
+                                                        <li><a class="dropdown-item" href="/Home/Logout">My Notes</a></li>
+                                                        <li><a class="dropdown-item" href="/Home/Logout">My Likeds</a></li>
+                                                        @if (user.IsAdmin == true)
+                                                        {
+                                                            <li><a class="dropdown-item" href="/Category/Create">Add Category</a></li>
+                                                            <li><a class="dropdown-item" href="/Category/Index">Categories</a></li>
+                                                            <li><a class="dropdown-item" href="/User/Create">Add User</a></li>
+                                                            <li><a class="dropdown-item" href="/User/Index">Users</a></li>
+                                                        }
+
+                                                    </ul>
+                                                </li>
+
+
+                                                <li class="dropdown">
+
                                                     @if (user.Name != null && user.Surname != null)
                                                     {
-                                                        <a class="dropdown-item dropdown-toggle" href="/Home/ShowProfile">
+                                                        <a class="dropdown-item dropdown-toggle active" href="/Home/ShowProfile">
                                                             @(user.Name + " " + user.Surname)
                                                         </a>
                                                     }
                                                     else
                                                     {
-                                                        <a class="dropdown-item dropdown-toggle" href="/Home/ShowProfile">
+                                                        <a class="dropdown-item dropdown-toggle active" href="/Home/ShowProfile">
                                                             My Account
                                                         </a>
                                                     }
@@ -132,49 +148,6 @@
             </div>
         </div>
     </header>
-    @*<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
-            <div class="header-body border-top-0 header-body-bottom-border">
-                <div class="header-container container-fluid px-lg-4">
-                    <div class="header-row">
-                        <div class="header-column justify-content-end">
-                            <div class="header-row">
-                                <div class="header-nav header-nav-line header-nav-bottom-line header-nav-line-under-text header-nav-bottom-line-effect-1">
-                                    <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
-                                        <nav class="collapse">
-                                            <ul class="nav nav-pills" id="mainNav">
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle active" href="/">
-                                                        Note Sharing Center
-                                                    </a>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
-                                                        Login
-                                                    </a>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
-                                                        Sing Up
-                                                    </a>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
-                                                        Gürhan GEDİK
-                                                    </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>*@
     <div class="body">
         <div class="row">
 

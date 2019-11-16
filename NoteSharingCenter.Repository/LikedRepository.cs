@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NoteSharingCenter.Repository
 {
-    public class LikedRepository
+    public class LikedRepository : ManagerBase<Liked>
     {
         private Repository<Liked> Liked = new Repository<Liked>();
 

@@ -46,6 +46,7 @@
     <Compile Include="Common.cs" />
     <Compile Include="ConfigHelper.cs" />
     <Compile Include="ICommon.cs" />
+    <Compile Include="IDataAccess.cs" />
     <Compile Include="MailHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

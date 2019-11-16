@@ -118,7 +118,6 @@ namespace NoteSharingCenter.DAL
                     }
 
                     //Add fake Likes
-
                     for (int l = 0; l < note.LikeCount; l++)
                     {
                         Liked liked = new Liked()
