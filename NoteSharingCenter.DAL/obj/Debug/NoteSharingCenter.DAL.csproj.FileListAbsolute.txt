@@ -16,5 +16,3 @@ C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\obj\De
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\obj\Debug\NoteSharingCenter.DAL.pdb
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\NoteSharing.Common.dll
 C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\NoteSharing.Common.pdb
-C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\NoteSharingCenter.DAL.dll.CodeAnalysisLog.xml
-C:\Users\gürhan\Documents\GitHub\NoteSharingCenter\NoteSharingCenter.DAL\bin\Debug\NoteSharingCenter.DAL.dll.lastcodeanalysissucceeded

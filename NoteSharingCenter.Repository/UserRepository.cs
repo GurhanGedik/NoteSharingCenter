@@ -10,14 +10,11 @@ using System.Threading.Tasks;
 
 namespace NoteSharingCenter.Repository
 {
-    public class UserRepository
+    public class UserRepository : ManagerBase<Users>
     {
-        private Repository<Users> ur = new Repository<Users>();
-
-
         public RepositoryLayerResult<Users> RegisterUser(RegisterViewModel data)
         {
-            Users user = ur.Find(x => x.Username == data.Username || x.Email == data.EMail);
+            Users user = Find(x => x.Username == data.Username || x.Email == data.EMail);
             RepositoryLayerResult<Users> layerResult = new RepositoryLayerResult<Users>();
             if (user != null)
             {
@@ -27,12 +24,12 @@ namespace NoteSharingCenter.Repository
                 }
                 if (user.Email == data.EMail)
                 {
-                    layerResult.AddError(ErrorMessageCode.EmailAlreadyExists, "Email already exists!");
+                    layerResult.AddError(ErrorMessageCode.UserCouldNotInserted, "Email already exists!");
                 }
             }
             else
             {
-                int Result = ur.Insert(new Users()
+                int Result = base.Insert(new Users()
                 {
                     Username = data.Username,
                     Email = data.EMail,
@@ -45,7 +42,7 @@ namespace NoteSharingCenter.Repository
 
                 if (Result > 0)
                 {
-                    layerResult.Result = ur.Find(x => x.Email == data.EMail && x.Username == data.Username);
+                    layerResult.Result = Find(x => x.Email == data.EMail && x.Username == data.Username);
                     string siteUri = ConfigHelper.Get<string>("SiteRootUri");
                     string activateUri = $"{siteUri}/Home/UserActivate/{layerResult.Result.ActiveteGuid}";
                     string body = $"<a href='{activateUri}' target='_blank'>Click here</a> to activate your account.";
@@ -58,7 +55,7 @@ namespace NoteSharingCenter.Repository
         public RepositoryLayerResult<Users> LoginUser(LoginViewModel data)
         {
             RepositoryLayerResult<Users> layerResult = new RepositoryLayerResult<Users>();
-            layerResult.Result = ur.Find(x => x.Username == data.Username && x.Password == data.Password);
+            layerResult.Result = Find(x => x.Username == data.Username && x.Password == data.Password);
 
             if (layerResult.Result != null)
             {
@@ -79,7 +76,7 @@ namespace NoteSharingCenter.Repository
         public RepositoryLayerResult<Users> ActivateUser(Guid id)
         {
             RepositoryLayerResult<Users> layerResult = new RepositoryLayerResult<Users>();
-            layerResult.Result = ur.Find(x => x.ActiveteGuid == id);
+            layerResult.Result = Find(x => x.ActiveteGuid == id);
 
             if (layerResult.Result != null)
             {
@@ -90,7 +87,7 @@ namespace NoteSharingCenter.Repository
                 }
 
                 layerResult.Result.IsActive = true;
-                ur.Update(layerResult.Result);
+                Update(layerResult.Result);
             }
             else
             {
@@ -102,7 +99,7 @@ namespace NoteSharingCenter.Repository
         public RepositoryLayerResult<Users> GetUserById(int id)
         {
             RepositoryLayerResult<Users> layerResult = new RepositoryLayerResult<Users>();
-            layerResult.Result = ur.Find(x => x.Id == id);
+            layerResult.Result = Find(x => x.Id == id);
             if (layerResult.Result == null)
             {
                 layerResult.AddError(ErrorMessageCode.UserNotFound, "User not found.");
@@ -114,7 +111,7 @@ namespace NoteSharingCenter.Repository
         public RepositoryLayerResult<Users> UpdateProfile(Users data)
         {
 
-            Users user = ur.Find(x => x.Id != data.Id && (x.Username == data.Username || x.Email == data.Email));
+            Users user = Find(x => x.Id != data.Id && (x.Username == data.Username || x.Email == data.Email));
             RepositoryLayerResult<Users> layerResult = new RepositoryLayerResult<Users>();
 
             if (user != null && user.Id != data.Id)
@@ -126,13 +123,13 @@ namespace NoteSharingCenter.Repository
 
                 if (user.Email == data.Email)
                 {
-                    layerResult.AddError(ErrorMessageCode.EmailAlreadyExists, "E-mail address already registered.");
+                    layerResult.AddError(ErrorMessageCode.UserCouldNotInserted, "E-mail address already registered.");
                 }
 
                 return layerResult;
             }
 
-            layerResult.Result = ur.Find(x => x.Id == data.Id);
+            layerResult.Result = Find(x => x.Id == data.Id);
             layerResult.Result.Email = data.Email;
             layerResult.Result.Name = data.Name;
             layerResult.Result.Surname = data.Surname;
@@ -145,9 +142,9 @@ namespace NoteSharingCenter.Repository
                 layerResult.Result.ProfileImageFilename = data.ProfileImageFilename;
             }
 
-            if (ur.Update(layerResult.Result) == 0)
+            if (base.Update(layerResult.Result) == 0)
             {
-                layerResult.AddError(ErrorMessageCode.ProfileCouldNotUpdated, "Failed to update profile.");
+                layerResult.AddError(ErrorMessageCode.UserCouldNotUpdate, "Failed to update profile.");
             }
 
             return layerResult;
@@ -183,10 +180,10 @@ namespace NoteSharingCenter.Repository
                 }
                 nr.Delete(item);
             }
-            Users user = ur.Find(x => x.Id == id);
+            Users user = Find(x => x.Id == id);
             if (user != null)
             {
-                if (ur.Delete(user) == 0)
+                if (Delete(user) == 0)
                 {
                     re.AddError(ErrorMessageCode.UserCouldNotRemove, "The user could not be deleted.");
                     return re;
@@ -197,6 +194,83 @@ namespace NoteSharingCenter.Repository
                 re.AddError(ErrorMessageCode.UserCouldNotFind, "User not found.");
             }
             return re;
+        }
+
+        public new RepositoryLayerResult<Users> Insert(Users data)
+        {
+            Users user = Find(x => x.Username == data.Username || x.Email == data.Email);
+            RepositoryLayerResult<Users> layerResult = new RepositoryLayerResult<Users>();
+            layerResult.Result = data;
+            if (user != null)
+            {
+                if (user.Username == data.Username)
+                {
+                    layerResult.AddError(ErrorMessageCode.UsernameAlreadyExists, "This username already exists!");
+                }
+                if (user.Email == data.Email)
+                {
+                    layerResult.AddError(ErrorMessageCode.UserCouldNotInserted, "Email already exists!");
+                }
+            }
+            else
+            {
+                layerResult.Result.ProfileImageFilename = "avatar.png";
+                layerResult.Result.ActiveteGuid = Guid.NewGuid();
+
+
+                if(base.Insert(layerResult.Result) == 0)
+                {
+                    layerResult.AddError(ErrorMessageCode.UserCouldNotInserted, "Failed to Add User.");
+                }
+
+            }
+            return layerResult;
+        }
+
+        public new RepositoryLayerResult<Users> Update(Users data)
+        {
+            Users user = Find(x => x.Id != data.Id && (x.Username == data.Username || x.Email == data.Email));
+            RepositoryLayerResult<Users> layerResult = new RepositoryLayerResult<Users>();
+
+            layerResult.Result = data;
+
+            if (user != null && user.Id != data.Id)
+            {
+                if (user.Username == data.Username)
+                {
+                    layerResult.AddError(ErrorMessageCode.UsernameAlreadyExists, "Username registered.");
+                }
+
+                if (user.Email == data.Email)
+                {
+                    layerResult.AddError(ErrorMessageCode.UserCouldNotInserted, "E-mail address already registered.");
+                }
+
+                return layerResult;
+            }
+
+            layerResult.Result = Find(x => x.Id == data.Id);
+            layerResult.Result.Email = data.Email;
+            layerResult.Result.Name = data.Name;
+            layerResult.Result.Surname = data.Surname;
+            layerResult.Result.AboutMe = data.AboutMe;
+            layerResult.Result.Password = data.Password;
+            layerResult.Result.Username = data.Username;
+            layerResult.Result.IsActive = data.IsActive;
+            layerResult.Result.IsAdmin = data.IsAdmin;
+
+
+            if (base.Update(layerResult.Result) == 0)
+            {
+                layerResult.AddError(ErrorMessageCode.UserCouldNotUpdate, "Failed to update user.");
+            }
+
+            return layerResult;
+        }
+
+        public override int Delete(Users obj)
+        {
+            return base.Delete(obj);
         }
     }
 }

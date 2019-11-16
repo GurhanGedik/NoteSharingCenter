@@ -7,17 +7,8 @@ using System.Threading.Tasks;
 
 namespace NoteSharingCenter.Repository
 {
-    public class NoteRepository
+    public class NoteRepository : ManagerBase<Note>
     {
-        private Repository<Note> note = new Repository<Note>();
-        public  List<Note> GetAllNote()
-        {
-            return note.List();
-        }
-
-        public IQueryable<Note> GetAllNoteQueryable()
-        {
-            return note.ListQueryable();
-        }
+       
     }
 }

@@ -7,18 +7,30 @@ using System.Threading.Tasks;
 
 namespace NoteSharingCenter.Repository
 {
-    public class CategoryRepository
+    public class CategoryRepository : ManagerBase<Category>
     {
-        private Repository<Category> Category = new Repository<Category>();
-
-        public List<Category> GetCategories()
+        public override int Delete(Category category)
         {
-            return Category.List();
-        }
+            NoteRepository nr = new NoteRepository();
+            LikedRepository lr = new LikedRepository();
+            CommentRepository cr = new CommentRepository();
 
-        public Category GetCategoryById(int id)
-        {
-            return Category.Find(X => X.Id == id);
+            foreach (Note note in category.Notes.ToList())
+            {
+                foreach (Liked like in note.Likes.ToList())
+                {
+                    lr.Delete(like);
+                }
+
+                foreach (Comment comment in note.Comments.ToList())
+                {
+                    cr.Delete(comment);
+                }
+
+                nr.Delete(note);
+            }
+
+            return base.Delete(category);
         }
     }
 }
