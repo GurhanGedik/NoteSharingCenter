@@ -1,0 +1,47 @@
+﻿@model NoteSharingCenter.Entity.Note
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+
+<div class="container">
+    <br />
+    <br />
+
+    <div class="row">
+
+        <div class="col-md-10">
+            <div class="col-md-5">
+
+                <h4>Note Details</h4>
+                <hr />
+                <h6><b>@Html.DisplayNameFor(model => model.Category.Title) : </b>@Model.Category.Title</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.Title) : </b>@Model.Title</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.Text) : </b>@Model.Text</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.IsDraft) : </b>@Model.IsDraft</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.LikeCount) : </b>@Model.LikeCount</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.CreatedOn) : </b>@Model.CreatedOn</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.ModifiedOn) : </b>@Model.ModifiedOn</h6>
+                <h6><b>@Html.DisplayNameFor(model => model.ModifiedUsername) : </b>@Model.ModifiedUsername</h6>
+
+                <br /><br />
+                <br />
+                <br /><br />
+                <br />
+                <br /><br /><br />
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+            <a href="~/Note/Edit/@Model.Id" class="btn btn-outline-success btn-lg btn-block">Edit Note</a>
+            <a href="~/Note/Index" class="btn btn-outline-warning btn-sm btn-block">Cancel</a>
+        </div>
+
+
+
+    </div>
+</div>

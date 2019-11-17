@@ -1,5 +1,6 @@
 ﻿using NoteSharing.Common;
 using NoteSharingCenter.Entity;
+using NoteSharingCenter.Sample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,13 @@ namespace NoteSharingCenter.Sample.Init
     {
         public string GetUsername()
         {
-            if (HttpContext.Current.Session["User"] != null)
+            Users user = MySession.CurrentUser;
+            if (user != null)
             {
-                Users user = HttpContext.Current.Session["User"] as Users;
                 return user.Username;
             }
-            return "System";
+            else
+                return "System";
         }
     }
 }

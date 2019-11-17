@@ -12,6 +12,7 @@
         UserNotFound = 156,
         UserCouldNotUpdate = 157,
         UserCouldNotRemove = 158,
-        UserCouldNotFind = 159
+        UserCouldNotFind = 159,
+        AdminDelete = 160
     }
 }

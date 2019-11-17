@@ -149,53 +149,7 @@ namespace NoteSharingCenter.Repository
 
             return layerResult;
         }
-        private Repository<Note> nr = new Repository<Note>();
-        private Repository<Liked> lr = new Repository<Liked>();
-        private Repository<Comment> cr = new Repository<Comment>();
-        public RepositoryLayerResult<Users> RemoveUserById(int id)
-        {
-            RepositoryLayerResult<Users> re = new RepositoryLayerResult<Users>();
-            List<Note> note = nr.List(x => x.Owner.Id == id);
-            List<Comment> Comment = cr.List(x => x.Owner.Id == id);
-            List<Liked> Liked = lr.List(x => x.LikedUser.Id == id);
-            foreach (var item in Comment)
-            {
-                cr.Delete(item);
-            }
-            foreach (var item in Liked)
-            {
-                lr.Delete(item);
-            }
-            foreach (var item in note)
-            {
-                List<Comment> Commentt = cr.List(x => x.Note.Id == item.Id);
-                List<Liked> Likedd = lr.List(x => x.Note.Id == item.Id);
-                foreach (var itemm in Commentt)
-                {
-                    cr.Delete(itemm);
-                }
-                foreach (var itemm in Likedd)
-                {
-                    lr.Delete(itemm);
-                }
-                nr.Delete(item);
-            }
-            Users user = Find(x => x.Id == id);
-            if (user != null)
-            {
-                if (Delete(user) == 0)
-                {
-                    re.AddError(ErrorMessageCode.UserCouldNotRemove, "The user could not be deleted.");
-                    return re;
-                }
-            }
-            else
-            {
-                re.AddError(ErrorMessageCode.UserCouldNotFind, "User not found.");
-            }
-            return re;
-        }
-
+        
         public new RepositoryLayerResult<Users> Insert(Users data)
         {
             Users user = Find(x => x.Username == data.Username || x.Email == data.Email);
@@ -218,7 +172,7 @@ namespace NoteSharingCenter.Repository
                 layerResult.Result.ActiveteGuid = Guid.NewGuid();
 
 
-                if(base.Insert(layerResult.Result) == 0)
+                if (base.Insert(layerResult.Result) == 0)
                 {
                     layerResult.AddError(ErrorMessageCode.UserCouldNotInserted, "Failed to Add User.");
                 }
@@ -268,9 +222,37 @@ namespace NoteSharingCenter.Repository
             return layerResult;
         }
 
-        public override int Delete(Users obj)
+        public override int Delete(Users user)
         {
-            return base.Delete(obj);
+            NoteRepository nr = new NoteRepository();
+            LikedRepository lr = new LikedRepository();
+            CommentRepository cr = new CommentRepository();
+
+            foreach (var note in user.Notes.ToList())
+            {
+                foreach (Liked like in note.Likes.ToList())
+                {
+                    lr.Delete(like);
+                }
+
+                foreach (Comment comment in note.Comments.ToList())
+                {
+                    cr.Delete(comment);
+                }
+
+                nr.Delete(note);
+            }
+            List<Liked> Likedd = lr.List(x => x.LikedUser.Id == user.Id);
+            List<Comment> Comment = cr.List(x => x.Owner.Id == user.Id);
+            foreach (var item in Likedd)
+            {
+                lr.Delete(item);
+            }
+            foreach (var item in Comment)
+            {
+                cr.Delete(item);
+            }
+            return base.Delete(user);
         }
     }
 }

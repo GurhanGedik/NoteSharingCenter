@@ -4868,6 +4868,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4877,6 +4878,7 @@
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\InfoViewModel.cs" />
     <Compile Include="Models\OkViewModel.cs" />
+    <Compile Include="Models\MySession.cs" />
     <Compile Include="Models\WarningViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -5425,6 +5427,11 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Note\Create.cshtml" />
+    <Content Include="Views\Note\Details.cshtml" />
+    <Content Include="Views\Note\Edit.cshtml" />
+    <Content Include="Views\Note\Index.cshtml" />
+    <Content Include="Views\Note\UserLikedNotes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
