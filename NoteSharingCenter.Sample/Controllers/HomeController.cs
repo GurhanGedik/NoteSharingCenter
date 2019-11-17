@@ -20,7 +20,7 @@ namespace NoteSharingCenter.Sample.Controllers
 
         public ActionResult Index()
         {
-            
+
             return View(nr.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
 
@@ -33,7 +33,7 @@ namespace NoteSharingCenter.Sample.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            
+
             Category cat = cr.Find(x => x.Id == id.Value);
 
             if (cat == null)
@@ -63,7 +63,7 @@ namespace NoteSharingCenter.Sample.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 RepositoryLayerResult<Users> re = ur.LoginUser(model);
 
                 if (re.Errors.Count > 0)
@@ -80,7 +80,7 @@ namespace NoteSharingCenter.Sample.Controllers
                     return View(model);
                 }
 
-                Session["User"] = re.Result;
+                MySession.Set<Users>("User", re.Result);
                 return RedirectToAction("Index");
             }
 
@@ -160,12 +160,7 @@ namespace NoteSharingCenter.Sample.Controllers
 
         public ActionResult ShowProfile()
         {
-            Users currentUser = Session["User"] as Users;
-            if (currentUser == null)
-            {
-                return RedirectToAction("Login");
-            }
-            RepositoryLayerResult<Users> re = ur.GetUserById(currentUser.Id);
+            RepositoryLayerResult<Users> re = ur.GetUserById(MySession.CurrentUser.Id);
 
             if (re.Errors.Count > 0)
             {
@@ -182,8 +177,7 @@ namespace NoteSharingCenter.Sample.Controllers
 
         public ActionResult EditProfile()
         {
-            Users currentUser = Session["User"] as Users;
-            RepositoryLayerResult<Users> re = ur.GetUserById(currentUser.Id);
+            RepositoryLayerResult<Users> re = ur.GetUserById(MySession.CurrentUser.Id);
 
             if (re.Errors.Count > 0)
             {
@@ -228,7 +222,7 @@ namespace NoteSharingCenter.Sample.Controllers
 
                     return View("Error", errorNotifyObj);
                 }
-                Session["User"] = re.Result;
+                MySession.Set<Users>("User", re.Result);
                 return RedirectToAction("ShowProfile");
             }
 
@@ -237,22 +231,8 @@ namespace NoteSharingCenter.Sample.Controllers
 
         public ActionResult DeleteProfile()
         {
-            Users currentUser = Session["User"] as Users;
-
-            RepositoryLayerResult<Users> re = ur.RemoveUserById(currentUser.Id);
-
-            if (re.Errors.Count > 0)
-            {
-                ErrorViewModel messages = new ErrorViewModel()
-                {
-                    Items = re.Errors,
-                    Title = "Failed to Delete Profile",
-                    RedirectinUrl = "/Home/ShowProfile"
-                };
-                return View("Error", messages);
-            }
+            ur.Delete(MySession.CurrentUser);
             Session.Clear();
-
             return RedirectToAction("Index");
         }
 

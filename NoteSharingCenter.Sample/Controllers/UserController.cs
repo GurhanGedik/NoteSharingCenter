@@ -99,8 +99,19 @@ namespace NoteSharingCenter.Sample.Controllers
 
         public ActionResult Delete(int id)
         {
+            if (id == 1)
+            {
+                ViewBag.Admin = "dont delete";
+                return RedirectToAction("Index","User");
+            }
             Users users = ur.Find(x => x.Id == id);
             ur.Delete(users);
+            Users currentUser = Session["User"] as Users;
+            if (currentUser.Id == id)
+            {
+                Session.Clear();
+                return RedirectToAction("Index", "Home");
+            }
             return RedirectToAction("Index");
         }
     }

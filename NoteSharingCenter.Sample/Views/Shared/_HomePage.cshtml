@@ -1,11 +1,5 @@
 ﻿@using NoteSharingCenter.Entity
-@{
-    Users user = null;
-    if (Session["User"] != null)
-    {
-        user = Session["User"] as Users;
-    }
-}
+@using NoteSharingCenter.Sample.Models
 <!DOCTYPE html>
 
 <html>
@@ -77,7 +71,7 @@
                                 <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
                                     <nav class="collapse">
                                         <ul class="nav nav-pills" id="mainNav">
-                                            @if (user == null)
+                                            @if (MySession.CurrentUser == null)
                                             {
                                                 <li class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle" href="/Home/Login">
@@ -91,7 +85,7 @@
                                                 </li>
                                             }
 
-                                            @if (user != null)
+                                            @if (MySession.CurrentUser != null)
                                             {
                                                 <li class="dropdown">
 
@@ -99,10 +93,10 @@
                                                         Control Board
                                                     </a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="/Home/Logout">New Note</a></li>
-                                                        <li><a class="dropdown-item" href="/Home/Logout">My Notes</a></li>
-                                                        <li><a class="dropdown-item" href="/Home/Logout">My Likeds</a></li>
-                                                        @if (user.IsAdmin == true)
+                                                        <li><a class="dropdown-item" href="/Note/Create">New Note</a></li>
+                                                        <li><a class="dropdown-item" href="/Note/Index">My Notes</a></li>
+                                                        <li><a class="dropdown-item" href="/Note/UserLikedNotes">My Likeds</a></li>
+                                                        @if (MySession.CurrentUser.IsAdmin == true)
                                                         {
                                                             <li><a class="dropdown-item" href="/Category/Create">Add Category</a></li>
                                                             <li><a class="dropdown-item" href="/Category/Index">Categories</a></li>
@@ -116,10 +110,10 @@
 
                                                 <li class="dropdown">
 
-                                                    @if (user.Name != null && user.Surname != null)
+                                                    @if (MySession.CurrentUser.Name != null && MySession.CurrentUser.Surname != null)
                                                     {
                                                         <a class="dropdown-item dropdown-toggle active" href="/Home/ShowProfile">
-                                                            @(user.Name + " " + user.Surname)
+                                                            @(MySession.CurrentUser.Name + " " + MySession.CurrentUser.Surname)
                                                         </a>
                                                     }
                                                     else
