@@ -1,0 +1,46 @@
+﻿@using NoteSharingCenter.Entity
+@model Note
+@{
+    ViewBag.Title = "NoteDetail";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+<div class="container py-4">
+
+    <div class="row">
+        <div class="col">
+            <div class="blog-posts single-post">
+
+                <article class="post post-large blog-single-post border-0 m-0 p-0">
+
+                    <div class="post-image ml-0">
+                        <a href="blog-post.html">
+                            <img src="~/Content/img/@Model.NoteImageFilename" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                        </a>
+                    </div>
+
+
+                    <div class="post-content ml-0">
+
+                        <h2 class="font-weight-bold"><a href="#">@Html.DisplayFor(x => x.Title)</a></h2>
+
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i><a href="#">@Html.DisplayFor(x => x.Owner.Name)</a> </span>
+                            <span><i class="far fa-clock"></i> <a href="#">@Html.DisplayFor(x => x.ModifiedOn)</a></span>
+                        </div>
+
+                        <p>@Html.DisplayFor(x => x.Text)</p>
+
+
+
+                        @Html.Partial("_Comments")
+
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

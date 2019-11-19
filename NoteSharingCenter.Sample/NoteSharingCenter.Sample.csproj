@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="blog-post.html" />
     <Content Include="Content\Admin\css\custom.css" />
     <Content Include="Content\Admin\css\invoice-print.css" />
     <Content Include="Content\Admin\css\skins\default.css" />
@@ -1956,7 +1957,6 @@
     <Content Include="Content\img\blog-11.jpg" />
     <Content Include="forms-basic.html" />
     <Content Include="Global.asax" />
-    <Content Include="Content\img\blog-46.jpg" />
     <Content Include="index-blog-3.html" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\demos\demo-architecture-interior.js" />
@@ -5432,6 +5432,8 @@
     <Content Include="Views\Note\Edit.cshtml" />
     <Content Include="Views\Note\Index.cshtml" />
     <Content Include="Views\Note\UserLikedNotes.cshtml" />
+    <Content Include="Views\Home\NoteDetail.cshtml" />
+    <Content Include="Views\Shared\_Comments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

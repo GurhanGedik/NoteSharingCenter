@@ -23,7 +23,7 @@
         {
             <div class="col-md-6 col-lg-4 mb-5 appear-animation " data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
                 <div class="card">
-                    <img class="card-img-top" src="~/Content/img/blog-11.jpg" alt="@item.Title">
+                    <img class="card-img-top" src="~/Content/img/@item.NoteImageFilename" alt="@item.Title">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6"><h4 class="card-title mb-1 text-4 font-weight-bold text-color-primary">@item.Title</h4></div>
@@ -43,7 +43,7 @@
                                 @item.Text;
                             }
                         </p>
-                        <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Read More <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
+                        <a href="~/Home/NoteDetail/@item.Id" class="read-more text-color-primary font-weight-semibold text-2">Read More <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
                         <div class="text-right">
                             <button type="button" class="mb-1 mt-1 mr-1 btn btn-outline btn-info btn-sm"><i class="far fa-star"></i> @item.LikeCount</button>
                             <button type="button" class="mb-1 mt-1 mr-1 btn btn-outline btn-info btn-sm"><i class="far fa-comments"></i> Comments</button>

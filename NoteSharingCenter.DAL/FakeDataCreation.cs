@@ -96,6 +96,7 @@ namespace NoteSharingCenter.DAL
                         IsDraft = false,
                         LikeCount = FakeData.NumberData.GetNumber(1, 9),
                         Owner = owner,
+                        NoteImageFilename= "blog-11.jpg",
                         CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedUsername = owner.Username

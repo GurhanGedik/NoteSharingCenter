@@ -58,6 +58,7 @@ namespace NoteSharingCenter.Sample.Controllers
             if (ModelState.IsValid)
             {
                 note.Owner = MySession.CurrentUser;
+                note.NoteImageFilename = "blog-11.jpg";
                 nr.Insert(note);
                 return RedirectToAction("Index");
             }
@@ -83,7 +84,7 @@ namespace NoteSharingCenter.Sample.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Note note)
+        public ActionResult Edit(Note note, HttpPostedFileBase ProfileImage)
         {
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
@@ -91,13 +92,30 @@ namespace NoteSharingCenter.Sample.Controllers
 
             if (ModelState.IsValid)
             {
-                Note notee = nr.Find(x => x.Id == note.Id);
-                notee.IsDraft = note.IsDraft;
-                notee.CategoryId = note.CategoryId;
-                notee.Text = note.Text;
-                notee.Title = note.Title;
+                if (ProfileImage != null &&
+                    (ProfileImage.ContentType == "image/jpeg" ||
+                    ProfileImage.ContentType == "image/jpg" ||
+                    ProfileImage.ContentType == "image/png"))
+                {
+                    string filename = $"user_{note.Id}.{ProfileImage.ContentType.Split('/')[1]}";
 
-                nr.Update(notee);
+                    ProfileImage.SaveAs(Server.MapPath($"~/Content/img/{filename}"));
+                    note.NoteImageFilename = filename;
+                }
+
+                RepositoryLayerResult<Note> re = nr.Updatee(note);
+
+                if (re.Errors.Count > 0)
+                {
+                    ErrorViewModel errorNotifyObj = new ErrorViewModel()
+                    {
+                        Items = re.Errors,
+                        Title = "Failed to update note.",
+                        RedirectinUrl = "/Note/Index"
+                    };
+
+                    return View("Error", errorNotifyObj);
+                }
 
                 return RedirectToAction("Index");
             }
