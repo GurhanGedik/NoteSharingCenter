@@ -17,6 +17,9 @@ namespace NoteSharingCenter.Entity
         [Required, StringLength(5000)]
         public string Text { get; set; }
 
+        [StringLength(200), ScaffoldColumn(false)]
+        public string NoteImageFilename { get; set; }
+
         public bool IsDraft { get; set; }
         public int LikeCount { get; set; }
         public int CategoryId { get; set; }

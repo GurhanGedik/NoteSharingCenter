@@ -24,6 +24,12 @@ namespace NoteSharingCenter.Sample.Controllers
             return View(nr.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
 
+        public ActionResult NoteDetail(int id)
+        {
+            Note note = nr.Find(x => x.Id == id);
+            return View(note);
+        }
+
         #region Filter
 
         public ActionResult Select(int? id)
