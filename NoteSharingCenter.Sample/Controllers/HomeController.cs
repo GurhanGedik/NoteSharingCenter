@@ -17,6 +17,7 @@ namespace NoteSharingCenter.Sample.Controllers
         private NoteRepository nr = new NoteRepository();
         private CategoryRepository cr = new CategoryRepository();
         private UserRepository ur = new UserRepository();
+        private CommentRepository cmr = new CommentRepository();
 
         public ActionResult Index()
         {
@@ -26,10 +27,59 @@ namespace NoteSharingCenter.Sample.Controllers
 
         public ActionResult NoteDetail(int id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             Note note = nr.Find(x => x.Id == id);
             return View(note);
         }
+        [HttpPost]
+        public ActionResult CommentEdit(int? id, string text)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
+            Comment comment = cmr.Find(x => x.Id == id);
+            if (comment == null)
+            {
+                return new HttpNotFoundResult();
+            }
+
+            comment.Text = text;
+            if (cmr.Update(comment) > 0)
+            {
+                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        
+        public ActionResult CommentDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Comment comment = cmr.Find(x => x.Id == id);
+            if (comment == null)
+            {
+                return new HttpNotFoundResult();
+            }
+
+            if (cmr.Delete(comment) > 0)
+            {
+                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+        }
         #region Filter
 
         public ActionResult Select(int? id)

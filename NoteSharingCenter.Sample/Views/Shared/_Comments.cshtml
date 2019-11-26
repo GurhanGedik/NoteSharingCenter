@@ -1,25 +1,49 @@
-﻿
+﻿@using NoteSharingCenter.Entity
+@using NoteSharingCenter.Repository
+@using NoteSharingCenter.Sample.Models
+@model Note
+
+@{
+    NoteRepository nr = new NoteRepository();
+    Note list = nr.Find(x => x.Id == Model.Id);
+
+    Users user = MySession.CurrentUser;
+}
 
 <div id="comments" class="post-block mt-5 post-comments">
     <h4 class="mb-3">Comments</h4>
 
     <ul class="comments">
-
-        <li>
-            <div class="comment">
-                <div class="comment-block">
-                    <div class="comment-arrow"></div>
-                    <span class="comment-by">
-                        <strong>John Doe</strong>
-                        <span class="float-right">
-                            <span> <a href="#"><i class="fas fa-reply"></i> Reply</a></span>
+        @foreach (var item in list.Comments)
+        {
+            <li>
+                <div class="comment">
+                    <div class="comment-block">
+                        <div class="comment-arrow"></div>
+                        <span class="comment-by">
+                            <strong>@item.Owner.Name</strong>
+                            @if (user != null && user.Id == item.Owner.Id)
+                            {
+                                <span class="float-right">
+                                    <button type="button" class="btn p-1" data-edit-mode="false" onclick="doComment(this,'edit_clicked',@item.Id,'#comment_@item.Id')">
+                                        <span class="far fa-edit text-primary"></span>
+                                    </button>
+                                    <button type="button" class="btn p-1" onclick="doComment(this,'delete_clicked',@item.Id)">
+                                        <span class="far fa-trash-alt text-primary"></span>
+                                    </button>
+                                </span>
+                            }
                         </span>
-                    </span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <span class="date float-right">November 12, 2018 at 1:38 pm</span>
+                        <div class="col-md-10">
+                            <p id="comment_@item.Id" contenteditable="false">@item.Text</p>
+                        </div>
+
+                        <span class="date float-right">@item.CreatedOn</span>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
+        }
+
     </ul>
 
 </div>
@@ -53,3 +77,83 @@
         </div>
     </form>
 </div>
+
+<style>
+    .textEdit {
+        border-radius: 3px;
+        background-color: #cacaca;
+        color: #000;
+        padding-left: 7px !important;
+    }
+</style>
+<script>
+    function doComment(btn, e, commentid, spanid) {
+
+        var button = $(btn);
+        var mode = button.data("edit-mode");
+
+        if (e === "edit_clicked") {
+
+            if (!mode) {
+                button.data("edit-mode", true);
+                var btnSpan = button.find("span");
+                btnSpan.removeClass("far fa-edit text-primary");
+                btnSpan.addClass("fas fa-check text-success");
+
+                $(spanid).addClass("textEdit");
+                $(spanid).attr("contenteditable", true);
+                $(spanid).focus();
+            }
+            else {
+                button.data("edit-mode", false);
+                var btnSpan = button.find("span");
+                btnSpan.addClass("far fa-edit text-primary");
+                btnSpan.removeClass("fas fa-check text-success");
+
+                $(spanid).removeClass("textEdit");
+                $(spanid).attr("contenteditable", false);
+
+                var txt = $(spanid).text();
+
+                $.ajax({
+                    method: "POST",
+                    url: "/Home/CommentEdit/" + commentid,
+                    data: { text: txt }
+                }).done(function (data) {
+
+                    if (data.result) {
+                    }
+                    else {
+                        alert("Failed to update comment.");
+                    }
+
+                }).find(function () {
+                    alert("Connection to server failed");
+                });
+
+            }
+        }
+        else if (e === "delete_clicked") {
+            var dialog = confirm("Are you sure you want to delete the comment?")
+
+            if (!dialog) return false;
+
+            $.ajax({
+                method: "GET",
+                url: "/Home/CommentDelete/" + commentid
+            }).done(function (data) {
+
+                if (data.result) {
+                    location.reload();
+                }
+                else {
+                    alert("Failed to delete comment.");
+                }
+
+            }).fail(function () {
+                alert("Connection to server failed");
+            });
+        }
+
+    }
+</script>
