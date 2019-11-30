@@ -140,5 +140,67 @@ namespace NoteSharingCenter.Sample.Controllers
 
             return View(notes.ToList());
         }
+
+        [HttpPost]
+        public ActionResult GetLiked(int[] ids)
+        {
+            if (MySession.CurrentUser != null)
+            {
+                List<int> likedNoteIds = lr.List(
+                    x => x.LikedUser.Id == MySession.CurrentUser.Id 
+                    && ids.Contains(x.Note.Id)).Select(x => x.Note.Id).ToList();
+
+                return Json(new { result = likedNoteIds });
+            }
+            else
+            {
+                return Json(new { result = new List<int>() });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SetLikeState(int noteid, bool liked)
+        {
+            int res = 0;
+
+            if (MySession.CurrentUser == null)
+                return Json(new { hasError = true, errorMessage = "Beğenme işlemi için giriş yapmalısınız.", result = 0 });
+
+            Liked like =
+                lr.Find(x => x.Note.Id == noteid && x.LikedUser.Id == MySession.CurrentUser.Id);
+
+            Note note = nr.Find(x => x.Id == noteid);
+
+            if (like != null && liked == false)
+            {
+                res = lr.Delete(like);
+            }
+            else if (like == null && liked == true)
+            {
+                res = lr.Insert(new Liked()
+                {
+                    LikedUser = MySession.CurrentUser,
+                    Note = note
+                });
+            }
+
+            if (res > 0)
+            {
+                if (liked)
+                {
+                    note.LikeCount++;
+                }
+                else
+                {
+                    note.LikeCount--;
+                }
+
+                res = nr.Update(note);
+
+                return Json(new { hasError = false, errorMessage = string.Empty, result = note.LikeCount });
+            }
+
+            return Json(new { hasError = true, errorMessage = "Beğenme işlemi gerçekleştirilemedi.", result = note.LikeCount });
+        }
     }
 }

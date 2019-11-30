@@ -21,7 +21,7 @@
     <div class="row">
         @foreach (Note item in Model)
         {
-            <div class="col-md-6 col-lg-4 mb-5 appear-animation " data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+            <div class="col-md-6 col-lg-4 mb-5 appear-animation " data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" data-note-id="@item.Id">
                 <div class="card">
                     <img class="card-img-top" src="~/Content/img/@item.NoteImageFilename" alt="@item.Title">
                     <div class="card-body">
@@ -45,7 +45,10 @@
                         </p>
                         <a href="~/Home/NoteDetail/@item.Id" class="read-more text-color-primary font-weight-semibold text-2">Read More <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
                         <div class="text-right">
-                            <button type="button" class="mb-1 mt-1 mr-1 btn btn-outline btn-info btn-sm"><i class="far fa-star"></i> @item.LikeCount</button>
+                            <button type="button" class="mb-1 mt-1 mr-1 btn btn-outline btn-info btn-sm" data-liked="false" data-note-id="@item.Id">
+                                <span class="far fa-star like-star"></span> 
+                                <span class="like-count">@item.LikeCount</span>
+                            </button>
                             <button type="button" class="mb-1 mt-1 mr-1 btn btn-outline btn-info btn-sm"><i class="far fa-comments"></i> Comments</button>
                         </div>
                     </div>
@@ -54,4 +57,5 @@
         }
     </div>
 </div>
+
 
