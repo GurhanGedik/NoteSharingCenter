@@ -1954,6 +1954,7 @@
     <Content Include="Content\css\theme.css" />
     <Content Include="Content\img\avatar.png" />
     <Content Include="Content\img\blog-11.jpg" />
+    <Content Include="Content\js\Liked.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\demos\demo-architecture-interior.js" />
