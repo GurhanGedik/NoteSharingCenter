@@ -48,35 +48,31 @@
 
 </div>
 
-<div class="post-block mt-5 post-leave-comment">
-    <h4 class="mb-3">Leave a comment</h4>
+@if (user != null)
+{
+    <div class="post-block mt-5 post-leave-comment">
+        <h4 class="mb-3">Leave a comment</h4>
 
-    <form id="contactForm" class="contact-form p-4 rounded bg-color-grey" action="php/contact-form.php" method="POST">
-        <div class="p-2">
-            <div class="form-row">
-                <div class="form-group col-lg-6">
-                    <label class="required font-weight-bold text-dark">Full Name</label>
-                    <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required>
+        <form id="contactForm" class="contact-form p-4 rounded bg-color-grey" action="php/contact-form.php" method="POST">
+            <div class="p-2">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label class="required font-weight-bold text-dark">Comment</label>
+                        <textarea maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" name="message" id="comment" required></textarea>
+                    </div>
                 </div>
-                <div class="form-group col-lg-6">
-                    <label class="required font-weight-bold text-dark">Email Address</label>
-                    <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col">
-                    <label class="required font-weight-bold text-dark">Comment</label>
-                    <textarea maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" name="message" id="message" required></textarea>
+                <div class="form-row">
+                    <div class="form-group col mb-0">
+                            <button type="button" class="btn btn-primary btn-modern" onclick="doComment(this, 'new_clicked', @Model.Id)">
+                                <span class="far fa-comment text-6"> </span><span class="text-3 text-center"> Comment</span>
+                            </button>
+                    </div>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col mb-0">
-                    <input type="submit" value="Post Comment" class="btn btn-primary btn-modern" data-loading-text="Loading...">
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+}
+
 
 <style>
     .textEdit {
@@ -148,6 +144,27 @@
                 }
                 else {
                     alert("Failed to delete comment.");
+                }
+
+            }).fail(function () {
+                alert("Connection to server failed");
+            });
+        }
+        else if (e === "new_clicked") {
+
+            var txt = $("#comment").val();
+
+            $.ajax({
+                method: "POST",
+                url: "/Home/CommentCreate/",
+                data: { "text": txt, "noteId": commentid }
+            }).done(function (data) {
+
+                if (data.result) {
+                    location.reload();
+                }
+                else {
+                    alert("Could not add comment.");
                 }
 
             }).fail(function () {

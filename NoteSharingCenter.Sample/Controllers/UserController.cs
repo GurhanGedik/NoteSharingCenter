@@ -15,11 +15,14 @@ namespace NoteSharingCenter.Sample.Controllers
     {
         private UserRepository ur = new UserRepository();
 
+        #region List
         public ActionResult Index()
         {
             return View(ur.List());
         }
+        #endregion
 
+        #region Detail
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -33,7 +36,9 @@ namespace NoteSharingCenter.Sample.Controllers
             }
             return View(users);
         }
+        #endregion
 
+        #region Create
         public ActionResult Create()
         {
             return View();
@@ -60,7 +65,9 @@ namespace NoteSharingCenter.Sample.Controllers
 
             return View(users);
         }
+        #endregion
 
+        #region Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -96,13 +103,15 @@ namespace NoteSharingCenter.Sample.Controllers
             }
             return View(users);
         }
+        #endregion
 
+        #region Delete
         public ActionResult Delete(int id)
         {
             if (id == 1)
             {
                 ViewBag.Admin = "dont delete";
-                return RedirectToAction("Index","User");
+                return RedirectToAction("Index", "User");
             }
             Users users = ur.Find(x => x.Id == id);
             ur.Delete(users);
@@ -114,5 +123,6 @@ namespace NoteSharingCenter.Sample.Controllers
             }
             return RedirectToAction("Index");
         }
+        #endregion
     }
 }

@@ -19,12 +19,15 @@ namespace NoteSharingCenter.Sample.Controllers
         private UserRepository ur = new UserRepository();
         private CommentRepository cmr = new CommentRepository();
 
+        #region HomePage
         public ActionResult Index()
         {
 
             return View(nr.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
+        #endregion
 
+        #region NoteDetail
         public ActionResult NoteDetail(int id)
         {
             if (id == null)
@@ -35,6 +38,9 @@ namespace NoteSharingCenter.Sample.Controllers
             Note note = nr.Find(x => x.Id == id);
             return View(note);
         }
+        #endregion
+
+        #region Comment
         [HttpPost]
         public ActionResult CommentEdit(int? id, string text)
         {
@@ -59,7 +65,6 @@ namespace NoteSharingCenter.Sample.Controllers
 
         }
 
-        
         public ActionResult CommentDelete(int? id)
         {
             if (id == null)
@@ -80,6 +85,40 @@ namespace NoteSharingCenter.Sample.Controllers
 
             return Json(new { result = false }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult CommentCreate(Comment comment, int? noteId)
+        {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
+
+            if (ModelState.IsValid)
+            {
+                if (noteId == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                Note note = nr.Find(x => x.Id == noteId);
+                if (note == null)
+                {
+                    return new HttpNotFoundResult();
+                }
+
+                comment.Note = note;
+                comment.Owner = MySession.CurrentUser;
+
+                if (cmr.Insert(comment) > 0)
+                {
+                    return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                }
+
+            }
+            return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
         #region Filter
 
         public ActionResult Select(int? id)
