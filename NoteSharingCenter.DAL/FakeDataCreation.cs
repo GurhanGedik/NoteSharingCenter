@@ -20,8 +20,8 @@ namespace NoteSharingCenter.DAL
                 ActiveteGuid = Guid.NewGuid(),
                 IsActive = true,
                 IsAdmin = true,
-                Username = "q",
-                Password = "q",
+                Username = "admin",
+                Password = "123",
                 ProfileImageFilename="avatar.png",
                 AboutMe= FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(3, 5)),
                 CreatedOn = DateTime.Now,
@@ -32,19 +32,19 @@ namespace NoteSharingCenter.DAL
 
             Users user = new Users()
             {
-                Name = "Gurhan",
+                Name = "Ayten",
                 Surname = "GEDIK",
                 Email = "gurhangedik2@hotmail.com",
                 ActiveteGuid = Guid.NewGuid(),
                 IsActive = true,
                 IsAdmin = false,
-                Username = "w",
-                Password = "w",
+                Username = "user",
+                Password = "123",
                 ProfileImageFilename = "avatar.png",
                 AboutMe = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(3, 5)),
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now,
-                ModifiedUsername = "gurhangedik"
+                ModifiedUsername = "aytengedik"
             };
             context.Users.Add(user);
 

@@ -16,11 +16,14 @@ namespace NoteSharingCenter.Sample.Controllers
     {
         CategoryRepository cr = new CategoryRepository();
 
+        #region List
         public ActionResult Index()
         {
             return View(cr.List());
         }
+        #endregion
 
+        #region Detail
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -34,7 +37,9 @@ namespace NoteSharingCenter.Sample.Controllers
             }
             return View(category);
         }
+        #endregion
 
+        #region Create
         public ActionResult Create()
         {
             return View();
@@ -56,7 +61,9 @@ namespace NoteSharingCenter.Sample.Controllers
 
             return View(category);
         }
+        #endregion
 
+        #region Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -70,7 +77,7 @@ namespace NoteSharingCenter.Sample.Controllers
             }
             return View(category);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Category category)
@@ -89,14 +96,16 @@ namespace NoteSharingCenter.Sample.Controllers
             }
             return View(category);
         }
-           
+        #endregion
+
+        #region Delete
         public ActionResult Delete(int id)
         {
             Category category = cr.Find(x => x.Id == id);
             cr.Delete(category);
             return RedirectToAction("Index");
         }
-
+        #endregion
 
     }
 }

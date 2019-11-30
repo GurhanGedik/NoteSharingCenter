@@ -19,12 +19,15 @@ namespace NoteSharingCenter.Sample.Controllers
         private UserRepository ur = new UserRepository();
         private CommentRepository cmr = new CommentRepository();
 
+        #region HomePage
         public ActionResult Index()
         {
 
             return View(nr.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
+        #endregion
 
+        #region NoteDetail
         public ActionResult NoteDetail(int id)
         {
             if (id == null)
@@ -35,6 +38,9 @@ namespace NoteSharingCenter.Sample.Controllers
             Note note = nr.Find(x => x.Id == id);
             return View(note);
         }
+        #endregion
+
+        #region Comment
         [HttpPost]
         public ActionResult CommentEdit(int? id, string text)
         {
@@ -58,7 +64,6 @@ namespace NoteSharingCenter.Sample.Controllers
             return Json(new { result = false }, JsonRequestBehavior.AllowGet);
 
         }
-
 
         public ActionResult CommentDelete(int? id)
         {
@@ -112,6 +117,7 @@ namespace NoteSharingCenter.Sample.Controllers
             }
             return Json(new { result = false }, JsonRequestBehavior.AllowGet);
         }
+        #endregion
 
         #region Filter
 

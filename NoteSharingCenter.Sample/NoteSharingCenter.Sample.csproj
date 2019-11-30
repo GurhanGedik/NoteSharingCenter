@@ -95,7 +95,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="blog-post.html" />
     <Content Include="Content\Admin\css\custom.css" />
     <Content Include="Content\Admin\css\invoice-print.css" />
     <Content Include="Content\Admin\css\skins\default.css" />
@@ -1955,9 +1954,7 @@
     <Content Include="Content\css\theme.css" />
     <Content Include="Content\img\avatar.png" />
     <Content Include="Content\img\blog-11.jpg" />
-    <Content Include="forms-basic.html" />
     <Content Include="Global.asax" />
-    <Content Include="index-blog-3.html" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\demos\demo-architecture-interior.js" />
     <Content Include="Content\js\demos\demo-barber.js" />
@@ -4858,10 +4855,6 @@
     <Content Include="Content\vendor\vide\jquery.vide.min.js" />
     <Content Include="Content\vendor\vivus\vivus.js" />
     <Content Include="Content\vendor\vivus\vivus.min.js" />
-    <Content Include="pages-signin.html" />
-    <Content Include="pages-signup.html" />
-    <Content Include="pages-user-profile.html" />
-    <Content Include="tables-basic.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
