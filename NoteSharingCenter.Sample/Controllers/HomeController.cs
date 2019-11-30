@@ -28,7 +28,7 @@ namespace NoteSharingCenter.Sample.Controllers
         #endregion
 
         #region NoteDetail
-        public ActionResult NoteDetail(int id)
+        public ActionResult NoteDetail(int? id)
         {
             if (id == null)
             {

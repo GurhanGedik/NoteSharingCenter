@@ -156,18 +156,22 @@ namespace NoteSharingCenter.Sample.Controllers
         [HttpPost]
         public ActionResult GetLiked(int[] ids)
         {
-            if (MySession.CurrentUser != null)
+            if (ids != null)
             {
-                List<int> likedNoteIds = lr.List(
-                    x => x.LikedUser.Id == MySession.CurrentUser.Id
-                    && ids.Contains(x.Note.Id)).Select(x => x.Note.Id).ToList();
+                if (MySession.CurrentUser != null)
+                {
+                    List<int> likedNoteIds = lr.List(
+                        x => x.LikedUser.Id == MySession.CurrentUser.Id
+                        && ids.Contains(x.Note.Id)).Select(x => x.Note.Id).ToList();
 
-                return Json(new { result = likedNoteIds });
+                    return Json(new { result = likedNoteIds });
+                }
+                else
+                {
+                    return Json(new { result = new List<int>() });
+                }
             }
-            else
-            {
-                return Json(new { result = new List<int>() });
-            }
+            return Json(new { result = new List<int>() });
         }
 
         [HttpPost]
