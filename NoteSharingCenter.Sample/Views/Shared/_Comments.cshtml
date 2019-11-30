@@ -22,7 +22,8 @@
                         <div class="comment-arrow"></div>
                         <span class="comment-by">
                             <strong>@item.Owner.Name</strong>
-                            @if (user != null && user.Id == item.Owner.Id)
+
+                            @if (user != null && (user.Id == item.Owner.Id || user.IsAdmin == true))
                             {
                                 <span class="float-right">
                                     <button type="button" class="btn p-1" data-edit-mode="false" onclick="doComment(this,'edit_clicked',@item.Id,'#comment_@item.Id')">
@@ -63,9 +64,9 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col mb-0">
-                            <button type="button" class="btn btn-primary btn-modern" onclick="doComment(this, 'new_clicked', @Model.Id)">
-                                <span class="far fa-comment text-6"> </span><span class="text-3 text-center"> Comment</span>
-                            </button>
+                        <button type="button" class="btn btn-primary btn-modern" onclick="doComment(this, 'new_clicked', @Model.Id)">
+                            <span class="far fa-comment text-6"> </span><span class="text-3 text-center"> Comment</span>
+                        </button>
                     </div>
                 </div>
             </div>
